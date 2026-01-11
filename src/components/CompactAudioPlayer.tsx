@@ -705,7 +705,7 @@ export function CompactAudioPlayer() {
 
               {/* Progress Bar */}
               <div
-                  className="mb-3 relative pr-39"
+                  className="mb-3 relative"
                   ref={progressBarRef}
                   onMouseMove={handleProgressMouseMove}
                   onMouseLeave={handleProgressMouseLeave}
@@ -745,7 +745,7 @@ export function CompactAudioPlayer() {
               </div>
 
               {/* Control Buttons - Compact Layout */}
-              <div className="flex items-center justify-start gap-2 mb-3 pl-16">
+              <div className="flex items-center justify-center md:justify-start gap-2 mb-3 md:pl-16">
                 <motion.button
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
