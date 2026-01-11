@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Play, Pause, SkipBack, SkipForward, Volume2, VolumeX, Upload, Repeat, Gauge, Music } from 'lucide-react';
+import { Play, Pause, SkipBack, SkipForward, Volume2, VolumeX, Upload, Repeat, Gauge, Music, RotateCcw } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface Particle {
@@ -114,7 +114,7 @@ export function CompactAudioPlayer() {
     };
 
     audio.addEventListener('loadedmetadata', setupAudioContext);
-    
+
     // If audio already has metadata, set up immediately
     if (audio.readyState >= 1) {
       setupAudioContext();
@@ -568,6 +568,27 @@ export function CompactAudioPlayer() {
     }
   };
 
+  const resetToDefaultTracks = () => {
+    // Stop playback
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+    }
+
+    // Reset all states
+    setAudioFile(null);
+    setIsUsingDefaultSong(true);
+    setCurrentSongIndex(0);
+    setIsPlaying(false);
+    setCurrentTime(0);
+    setShowUploadHint(true);
+
+    // Load default track
+    if (audioRef.current) {
+      audioRef.current.src = DEFAULT_SONGS[0].url;
+    }
+  };
+
   return (
       <div className="w-full">
         <motion.div
@@ -640,65 +661,78 @@ export function CompactAudioPlayer() {
                       {audioFile ? `${(audioFile.size / (1024 * 1024)).toFixed(2)} MB` : `Track ${currentSongIndex + 1} of ${DEFAULT_SONGS.length}`}
                     </p>
                   </div>
-                  
+
                   {/* Track Navigation (visible only for default songs) */}
                   {isUsingDefaultSong && !audioFile && (
-                    <div className="flex items-center gap-1 ml-2">
+                      <div className="flex items-center gap-1 ml-2">
+                        <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => {
+                              const prevIndex = currentSongIndex === 0 ? DEFAULT_SONGS.length - 1 : currentSongIndex - 1;
+                              setCurrentSongIndex(prevIndex);
+                              if (audioRef.current) {
+                                audioRef.current.src = DEFAULT_SONGS[prevIndex].url;
+                                if (isPlaying) audioRef.current.play();
+                              }
+                            }}
+                            className="w-6 h-6 rounded-full bg-slate-700/50 hover:bg-slate-700 backdrop-blur-sm transition-all flex items-center justify-center text-purple-300"
+                            title="Previous track"
+                        >
+                          <SkipBack className="w-3 h-3" />
+                        </motion.button>
+
+                        <motion.button
+                            whileHover={{ scale: 1.1 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => {
+                              const nextIndex = (currentSongIndex + 1) % DEFAULT_SONGS.length;
+                              setCurrentSongIndex(nextIndex);
+                              if (audioRef.current) {
+                                audioRef.current.src = DEFAULT_SONGS[nextIndex].url;
+                                if (isPlaying) audioRef.current.play();
+                              }
+                            }}
+                            className="w-6 h-6 rounded-full bg-slate-700/50 hover:bg-slate-700 backdrop-blur-sm transition-all flex items-center justify-center text-purple-300"
+                            title="Next track"
+                        >
+                          <SkipForward className="w-3 h-3" />
+                        </motion.button>
+                      </div>
+                  )}
+
+                  {/* Reset Button (visible only when user has uploaded a song) */}
+                  {audioFile && !isUsingDefaultSong && (
                       <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => {
-                          const prevIndex = currentSongIndex === 0 ? DEFAULT_SONGS.length - 1 : currentSongIndex - 1;
-                          setCurrentSongIndex(prevIndex);
-                          if (audioRef.current) {
-                            audioRef.current.src = DEFAULT_SONGS[prevIndex].url;
-                            if (isPlaying) audioRef.current.play();
-                          }
-                        }}
-                        className="w-6 h-6 rounded-full bg-slate-700/50 hover:bg-slate-700 backdrop-blur-sm transition-all flex items-center justify-center text-purple-300"
-                        title="Previous track"
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                          onClick={resetToDefaultTracks}
+                          className="ml-2 w-7 h-7 rounded-full bg-cyan-500/20 hover:bg-cyan-500/30 border border-cyan-500/50 backdrop-blur-sm transition-all flex items-center justify-center text-cyan-400"
+                          title="Reset to default tracks"
                       >
-                        <SkipBack className="w-3 h-3" />
+                        <RotateCcw className="w-3.5 h-3.5" />
                       </motion.button>
-                      
-                      <motion.button
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => {
-                          const nextIndex = (currentSongIndex + 1) % DEFAULT_SONGS.length;
-                          setCurrentSongIndex(nextIndex);
-                          if (audioRef.current) {
-                            audioRef.current.src = DEFAULT_SONGS[nextIndex].url;
-                            if (isPlaying) audioRef.current.play();
-                          }
-                        }}
-                        className="w-6 h-6 rounded-full bg-slate-700/50 hover:bg-slate-700 backdrop-blur-sm transition-all flex items-center justify-center text-purple-300"
-                        title="Next track"
-                      >
-                        <SkipForward className="w-3 h-3" />
-                      </motion.button>
-                    </div>
                   )}
                 </div>
-                
+
                 {/* Upload hint notification */}
                 <AnimatePresence>
                   {showUploadHint && isUsingDefaultSong && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="mt-2 flex items-center gap-2 text-[10px] text-cyan-400/70 bg-cyan-500/5 border border-cyan-500/20 rounded-lg px-2 py-1"
-                    >
-                      <Music className="w-3 h-3 flex-shrink-0" />
-                      <span className="flex-1">Don't like these tracks? Upload your own music!</span>
-                      <button
-                        onClick={() => setShowUploadHint(false)}
-                        className="text-cyan-400/50 hover:text-cyan-400 transition-colors"
+                      <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          className="mt-2 flex items-center gap-2 text-[10px] text-cyan-400/70 bg-cyan-500/5 border border-cyan-500/20 rounded-lg px-2 py-1"
                       >
-                        ✕
-                      </button>
-                    </motion.div>
+                        <Music className="w-3 h-3 flex-shrink-0" />
+                        <span className="flex-1">Don't like these tracks? Upload your own music!</span>
+                        <button
+                            onClick={() => setShowUploadHint(false)}
+                            className="text-cyan-400/50 hover:text-cyan-400 transition-colors"
+                        >
+                          ✕
+                        </button>
+                      </motion.div>
                   )}
                 </AnimatePresence>
               </div>
