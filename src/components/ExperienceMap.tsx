@@ -105,7 +105,7 @@ export function ExperienceMap() {
         <motion.div
           className="absolute"
           style={{
-            left: '19%',
+            left: 'calc(19% + 11px)',
             top: '45%',
             transform: 'translate(-50%, -50%)',
           }}
@@ -165,8 +165,8 @@ export function ExperienceMap() {
         <motion.div
           className="absolute"
           style={{
-            left: '58.75%',
-            top: '56.5%',
+            left: 'calc(58.75% - 3.5px)',
+            top: 'calc(56.5% + 3px)',
             transform: 'translate(-50%, -50%)',
           }}
           initial={{ scale: 0, opacity: 0 }}
@@ -195,8 +195,8 @@ export function ExperienceMap() {
         <motion.div
           className="absolute"
           style={{
-            left: '30%',
-            top: '50.5%',
+            left: 'calc(30% + 7px)',
+            top: 'calc(50.5% - 2px)',
             transform: 'translate(-50%, -50%)',
           }}
           initial={{ scale: 0, opacity: 0 }}
@@ -225,7 +225,7 @@ export function ExperienceMap() {
         <motion.div
           className="absolute"
           style={{
-            left: '28%',
+            left: 'calc(28% + 6px)',
             top: '43.5%',
             transform: 'translate(-50%, -50%)',
           }}
@@ -255,7 +255,7 @@ export function ExperienceMap() {
         <motion.div
           className="absolute"
           style={{
-            left: '34%',
+            left: 'calc(34% + 4px)',
             top: '47.5%',
             transform: 'translate(-50%, -50%)',
           }}

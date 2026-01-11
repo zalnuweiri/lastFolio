@@ -167,7 +167,7 @@ export function InfoCube({ theme }: InfoCubeProps) {
 
       {/* Label */}
       <div className={`absolute top-6 left-6 text-xs z-20 ${theme === 'dark' ? 'text-gray-600' : 'text-gray-400'}`}>
-        03 EXPERIENCE SNAPSHOT
+        EXPERIENCE SNAPSHOT
       </div>
 
       {/* Instruction hint */}

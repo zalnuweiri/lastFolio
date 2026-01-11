@@ -15,7 +15,7 @@ export function SkillMatrix({ theme }: SkillMatrixProps) {
   const [hoveredSkillIndex, setHoveredSkillIndex] = useState<number | null>(null);
 
   const skills = [
-    { name: 'Platform Design', level: 95, checked: true, years: 8 },
+    { name: 'Platform Design', level: 90, checked: true, years: 8 },
     { name: 'UI UX Design', level: 92, checked: true, years: 7 },
     { name: 'Interaction Design', level: 88, checked: true, years: 6 },
     { name: 'Website Design', level: 85, checked: true, years: 9 },
@@ -28,7 +28,7 @@ export function SkillMatrix({ theme }: SkillMatrixProps) {
   ];
 
   const tools = [
-    { name: 'Figma', percentage: 100 },
+    { name: 'Figma', percentage: 90 },
     { name: 'Photoshop', percentage: 85 },
     { name: 'Framer', percentage: 78 },
     { name: 'Sketch', percentage: 70 },
@@ -158,10 +158,10 @@ export function SkillMatrix({ theme }: SkillMatrixProps) {
 
       {/* Header */}
       <div className="flex justify-between items-start mb-3 md:mb-4 relative z-10">
-        <div className="text-xs text-gray-600">04 CASE STUDY</div>
-        <div className="hidden md:flex gap-8 text-xs">
-          <div className="text-gray-600">YEARS</div>
-          <div className="text-gray-600">TOOL</div>
+        <div className="text-xs text-gray-600"></div>
+        <div className="hidden md:flex text-xs">
+          <div className="text-gray-600 -ml-2">YEARS</div>
+          <div className="text-gray-600 ml-32">TOOL</div>
         </div>
       </div>
 
