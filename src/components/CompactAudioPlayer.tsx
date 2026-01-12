@@ -16,16 +16,16 @@ interface Particle {
 // Default songs that users can cycle through
 const DEFAULT_SONGS = [
   {
-    name: 'Track 1 - Electronic Dreams',
+    name: "Togne N'Gama - Omar Pene",
     url: '/diamono.mp3', // Must start with / for public folder
   },
   {
-    name: 'Track 2 - Ambient Waves',
+    name: 'Saint of Circumstance - Grateful Dead',
     url: '/saintcirc.mp3', // Must start with / for public folder
   },
   {
-    name: 'Track 3 - Synthwave Sunset',
-    url: '/diamono.mp3', // Must start with / for public folder
+    name: 'Moudje - Omar Pene & Super Diamono',
+    url: '/moudje.mp3', // Must start with / for public folder
   }
 ];
 
