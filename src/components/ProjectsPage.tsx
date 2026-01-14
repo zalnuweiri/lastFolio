@@ -303,6 +303,7 @@ export function ProjectsPage({ theme, onBack, scrollToProjectId }: ProjectsPageP
         <div className="max-w-7xl mx-auto">
           <motion.h2
             className="text-4xl md:text-6xl mb-12"
+            style={{ fontFamily: "'Righteous', sans-serif" }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -369,6 +370,7 @@ export function ProjectsPage({ theme, onBack, scrollToProjectId }: ProjectsPageP
           <div className="max-w-5xl mx-auto">
             <motion.h2
               className="text-4xl md:text-6xl mb-4"
+              style={{ fontFamily: "'Righteous', sans-serif" }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -414,7 +416,7 @@ export function ProjectsPage({ theme, onBack, scrollToProjectId }: ProjectsPageP
                 blurAmount={0}
                 className="h-full"
               >
-                {/* Project Card 1 */}
+                {/* Project Card 1 - Loaded */}
                 <ScrollStackItem itemClassName="custom-project-card">
                   <div className="bg-[#111111] border border-gray-800/50 rounded-3xl overflow-hidden h-full p-6 md:p-8">
                     {/* Project Header */}
@@ -429,16 +431,14 @@ export function ProjectsPage({ theme, onBack, scrollToProjectId }: ProjectsPageP
                         <h2 className="text-3xl md:text-4xl mb-2">{featuredProjects[0].title}</h2>
                         <p className="text-base md:text-lg text-gray-400">{featuredProjects[0].subtitle}</p>
                       </div>
-                      {featuredProjects[0].link && (
-                        <motion.a
-                          href={featuredProjects[0].link}
-                          className="p-3 rounded-full bg-white/5 hover:bg-white/10 transition-colors flex-shrink-0"
-                          whileHover={{ scale: 1.1, rotate: 45 }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          <ArrowUpRight className="w-5 h-5" />
-                        </motion.a>
-                      )}
+                      <motion.button
+                        onClick={() => setSelectedProject(projects.find(p => p.id === featuredProjects[0].id))}
+                        className="p-3 rounded-full bg-white/5 hover:bg-white/10 transition-colors flex-shrink-0"
+                        whileHover={{ scale: 1.1, rotate: 45 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <ArrowUpRight className="w-5 h-5" />
+                      </motion.button>
                     </div>
 
                     {/* Main Content Grid */}
@@ -853,7 +853,7 @@ export function ProjectsPage({ theme, onBack, scrollToProjectId }: ProjectsPageP
                 blurAmount={0}
                 className="h-full"
               >
-                {/* Project Card 1 */}
+                {/* Project Card 1 - Fallback */}
                 <ScrollStackItem itemClassName="custom-project-card">
                   <div className="bg-[#111111] border border-gray-800/50 rounded-3xl overflow-hidden h-full p-6 md:p-8">
                     {/* Project Header */}
@@ -869,14 +869,14 @@ export function ProjectsPage({ theme, onBack, scrollToProjectId }: ProjectsPageP
                         <p className="text-base md:text-lg text-gray-400">{featuredProjects[0].subtitle}</p>
                       </div>
                       {featuredProjects[0].link && (
-                        <motion.a
-                          href={featuredProjects[0].link}
+                        <motion.button
+                          onClick={() => setSelectedProject(projects.find(p => p.id === featuredProjects[0].id))}
                           className="p-3 rounded-full bg-white/5 hover:bg-white/10 transition-colors flex-shrink-0"
                           whileHover={{ scale: 1.1, rotate: 45 }}
                           whileTap={{ scale: 0.95 }}
                         >
                           <ArrowUpRight className="w-5 h-5" />
-                        </motion.a>
+                        </motion.button>
                       )}
                     </div>
 

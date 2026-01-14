@@ -1,14 +1,8 @@
 import { motion } from 'motion/react';
-import ColorBends from './ColorBends';
-import { User, Code, Heart, Zap, Award, Coffee, Briefcase, Calendar, MapPin, GraduationCap, Layers, Database, Terminal, Palette, Download, Mail, Linkedin, Github, ExternalLink, TrendingUp, Target, BookOpen } from 'lucide-react';
-import React from 'react';
+import { Download, Mail, MapPin, Calendar, Briefcase, Code, BookOpen, Award, Heart, Coffee, Zap, Users, Palette, Globe } from 'lucide-react';
+import cvFile from 'figma:asset/a772e554a7dad7ee8839521a8db6af8472cb9160.png';
 
-interface AboutPageProps {
-  theme: 'light' | 'dark';
-  onBack: () => void;
-}
-
-export function AboutPage({ theme, onBack }: AboutPageProps) {
+export function AboutPageNew() {
   const homeStats = [
     { value: '15+', label: 'Projects Built' },
     { value: '5+', label: 'Years Experience' },
@@ -19,8 +13,8 @@ export function AboutPage({ theme, onBack }: AboutPageProps) {
     { icon: MapPin, label: 'Location', value: 'Halifax, NS' },
     { icon: Briefcase, label: 'Availability', value: 'Open to Opportunities' },
     { icon: Mail, label: 'Email', value: 'zayd@example.com', link: 'mailto:zayd@example.com' },
-    { icon: Linkedin, label: 'LinkedIn', value: '/zaydalnuweiri', link: '#' },
-    { icon: Github, label: 'GitHub', value: '/zaydalnuweiri', link: '#' },
+    { icon: Globe, label: 'LinkedIn', value: '/zaydalnuweiri', link: '#' },
+    { icon: Globe, label: 'GitHub', value: '/zaydalnuweiri', link: '#' },
   ];
 
   const techStack = {
@@ -276,7 +270,7 @@ export function AboutPage({ theme, onBack }: AboutPageProps) {
             viewport={{ once: true }}
           >
             <motion.a
-              href="#"
+              href={cvFile}
               download
               className="flex items-center gap-2 px-6 py-3 bg-[#4d9eff] text-white rounded-lg hover:bg-[#3d8eef] transition-colors"
               whileHover={{ scale: 1.05 }}

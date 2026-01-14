@@ -28,7 +28,7 @@ export function Contact({ theme }: ContactProps) {
         templateId,
         {
           from_name: formData.name,
-          from_email: formData.email,
+          reply_to: formData.email,
           message: formData.message,
           to_email: 'zhmalnuweiri@gmail.com',
         },

@@ -5,6 +5,7 @@ import React from 'react';
 import profileImage from 'figma:asset/1b614c1c36fe408dce982a8e7d6847c05e2614ac.png';
 import dalShield from 'figma:asset/7a3b34109acfde89359d9edb240579b0309ff09f.png';
 import { CompactAudioPlayer } from './CompactAudioPlayer';
+import cvFile from 'figma:asset/a772e554a7dad7ee8839521a8db6af8472cb9160.png';
 
 interface AboutPageProps {
   theme: 'light' | 'dark';
@@ -16,6 +17,7 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
   const [expandedCategories, setExpandedCategories] = React.useState<string[]>([]);
   const [skillSearch, setSkillSearch] = React.useState('');
   const [expandedExperience, setExpandedExperience] = React.useState<number[]>([]);
+  const [showVideoDialog, setShowVideoDialog] = React.useState(false);
   
   const homeStats = [
     { value: '5+', label: 'Years Production Software' },
@@ -59,7 +61,7 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
       location: 'Toronto, Canada',
       period: 'September 2025 - December 2025',
       description: 'Delivered a rapid Agile build converting a detailed Figma design into a pixel-accurate, responsive React site with continuous client feedback.',
-      demoLink: '#',
+      demoLink: 'https://www.silenth.ca',
       highlights: [
         'Implemented full-stack features using React, EmailJS, and PostgreSQL',
         'Migrated deployment from Netlify to Cloudflare with DNS configuration',
@@ -82,7 +84,7 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
       location: 'Toronto, Canada',
       period: 'June 2025 - Current',
       description: 'Contributed to an AI-powered detection platform (under NDA), enhancing alert workflows, timeout logic, and UI functionality.',
-      demoLink: '#',
+      demoLink: 'https://mciti.netlify.app/',
       highlights: [
         'Performed Linux-based testing of alert acknowledgement systems',
         'Documented Git repositories and enforced repo structure standards',
@@ -595,29 +597,54 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
           {/* Section Header */}
           <div className="flex items-center justify-between mb-8">
             <motion.h2
-              className="group inline-block relative text-4xl md:text-5xl lg:text-6xl cursor-pointer overflow-visible"
+              className="group inline-block relative text-[2.1rem] md:text-[2.85rem] lg:text-[3.42rem] cursor-pointer overflow-visible"
               style={{ fontFamily: "'Righteous', sans-serif" }}
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <span className="relative inline-block text-[#4d9eff] transition-all duration-300 group-hover:text-[#ff0080] group-hover:tracking-wider">
-                Quick Summary
-                <span className="absolute -bottom-1 left-0 w-0 h-[3px] bg-[#4d9eff] group-hover:w-full transition-all duration-500 rounded-full" />
+              <span className="relative inline-block group-hover:tracking-wider">
+                {"Professional Overview".split('').map((char, index) => {
+                  const isSpace = char === ' ';
+                  // Calculate character index excluding the space
+                  let charIndex = index;
+                  if (index > 12) charIndex = index - 1; // Subtract 1 for space after "Professional"
+                  
+                  const shouldTurnRed = !isSpace && charIndex < 21;
+                  const delay = shouldTurnRed ? charIndex * 80 : 0;
+                  
+                  // Insert line break after "Professional"
+                  if (index === 12) {
+                    return <br key={index} />;
+                  }
+                  
+                  return (
+                    <span
+                      key={index}
+                      className={`inline-block text-[#4d9eff] ${shouldTurnRed ? 'group-hover:text-[#ff0080]' : ''}`}
+                      style={{
+                        transition: 'color 0.3s ease',
+                        transitionDelay: `${delay}ms`
+                      }}
+                    >
+                      {char === ' ' ? '\u00A0' : char}
+                    </span>
+                  );
+                })}
               </span>
             </motion.h2>
             
             <motion.a
-              href="#"
-              download
-              className="flex items-center gap-2 px-6 py-3 bg-[#4d9eff] text-white rounded-lg hover:bg-[#3d8eef] transition-colors"
+              href={cvFile}
+              download="Zayd_Alnuweiri_CV.png"
+              className="flex items-center gap-1.5 px-3 py-1.5 md:px-6 md:py-3 text-xs md:text-base bg-[#4d9eff] text-white rounded-lg hover:bg-[#3d8eef] transition-colors whitespace-nowrap"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: -20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <Download className="w-4 h-4" />
+              <Download className="w-2.5 h-2.5 md:w-4 md:h-4" />
               <span>Download CV</span>
             </motion.a>
           </div>
@@ -689,12 +716,15 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
             >
               <div className="flex items-center gap-2 mb-4">
                 <User className="w-5 h-5 text-[#4d9eff]" />
-                <h3 className="text-xl">Summary</h3>
+                <h3 className="text-xl">Professional Summary</h3>
               </div>
-              <p className="text-gray-300 text-sm leading-relaxed mb-3">
-                Full-stack developer with 5+ years of experience building scalable web applications and interactive user experiences. Specialized in React, TypeScript, and modern JavaScript ecosystem with a strong focus on performance, accessibility, and design excellence.
+              <p className="text-gray-300 text-[13px] leading-relaxed mb-3">
+                Working professional with almost 10 years of experience across numerous disciplines. Started in Customer Relations Management with Al-Markhiya Gallery. Experienced Web Design for the first time there, and partook in bookkeeping, invoicing, and customer service. Worked in Event Planning and Manufacturing at Fetish Records in New York City. In University, I pursued Sociology and Public Policy, but transferred to Computer Science after feeling unchallenged, though the former discipline remains one of my most cherished passions.
               </p>
-              <p className="text-gray-300 text-sm leading-relaxed">
+              <p className="text-gray-300 text-[13px] leading-relaxed mb-3">
+                I have 5+ years of Full-Stack Development experience building scalable web applications and interactive user experiences. Specialized in React, TypeScript, and modern JavaScript ecosystem with a strong focus on performance, accessibility, and design excellence.
+              </p>
+              <p className="text-gray-300 text-[13px] leading-relaxed">
                 Proven track record of delivering high-quality products in fast-paced environments, leading development teams, and translating complex business requirements into elegant technical solutions.
               </p>
             </motion.div>
@@ -992,9 +1022,29 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <span className="relative inline-block text-[#4d9eff] transition-all duration-300 group-hover:text-[#ff0080] group-hover:tracking-wider">
-                Technical Skills
-                <span className="absolute -bottom-1 left-0 w-0 h-[3px] bg-[#4d9eff] group-hover:w-full transition-all duration-500 rounded-full" />
+              <span className="relative inline-block group-hover:tracking-wider">
+                {"Technical Skills".split('').map((char, index) => {
+                  const isSpace = char === ' ';
+                  // Calculate character index excluding the space
+                  let charIndex = index;
+                  if (index > 9) charIndex = index - 1; // Subtract 1 for space after "Technical"
+                  
+                  const shouldTurnRed = !isSpace && charIndex < 15;
+                  const delay = shouldTurnRed ? charIndex * 80 : 0;
+                  
+                  return (
+                    <span
+                      key={index}
+                      className={`inline-block text-[#4d9eff] ${shouldTurnRed ? 'group-hover:text-[#ff0080]' : ''}`}
+                      style={{
+                        transition: 'color 0.3s ease',
+                        transitionDelay: `${delay}ms`
+                      }}
+                    >
+                      {char === ' ' ? '\u00A0' : char}
+                    </span>
+                  );
+                })}
               </span>
             </motion.h2>
             
@@ -1156,9 +1206,32 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <span className="relative inline-block text-[#4d9eff] transition-all duration-300 group-hover:text-[#ff0080] group-hover:tracking-wider">
-              What I'm Listening to Nowadays
-              <span className="absolute -bottom-1 left-0 w-0 h-[3px] bg-[#4d9eff] group-hover:w-full transition-all duration-500 rounded-full" />
+            <span className="relative inline-block group-hover:tracking-wider">
+              {"What I'm Listening to Nowadays".split('').map((char, index) => {
+                const isSpace = char === ' ';
+                // Calculate character index excluding spaces
+                let charIndex = index;
+                if (index > 4) charIndex -= 1; // space after "What"
+                if (index > 7) charIndex -= 1; // space after "I'm"
+                if (index > 17) charIndex -= 1; // space after "Listening"
+                if (index > 19) charIndex -= 1; // space after "to"
+                
+                const shouldTurnRed = !isSpace && charIndex < 26;
+                const delay = shouldTurnRed ? charIndex * 80 : 0;
+                
+                return (
+                  <span
+                    key={index}
+                    className={`inline-block text-[#4d9eff] ${shouldTurnRed ? 'group-hover:text-[#ff0080]' : ''}`}
+                    style={{
+                      transition: 'color 0.3s ease',
+                      transitionDelay: `${delay}ms`
+                    }}
+                  >
+                    {char === ' ' ? '\u00A0' : char}
+                  </span>
+                );
+              })}
             </span>
           </motion.h2>
 
@@ -1195,8 +1268,39 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-3xl md:text-4xl">Work Experience</h2>
-              <p className="text-sm text-gray-500">Click cards for full details</p>
+              <motion.h2
+                className="group inline-block relative text-4xl md:text-5xl lg:text-6xl cursor-pointer overflow-visible"
+                style={{ fontFamily: "'Righteous', sans-serif" }}
+                initial={{ opacity: 0, y: -20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <span className="relative inline-block group-hover:tracking-wider">
+                  {"Work Experience".split('').map((char, index) => {
+                    const isSpace = char === ' ';
+                    // Calculate character index excluding the space
+                    let charIndex = index;
+                    if (index > 4) charIndex = index - 1; // Subtract 1 for space after "Work"
+                    
+                    const shouldTurnRed = !isSpace && charIndex < 14;
+                    const delay = shouldTurnRed ? charIndex * 80 : 0;
+                    
+                    return (
+                      <span
+                        key={index}
+                        className={`inline-block text-[#4d9eff] ${shouldTurnRed ? 'group-hover:text-[#ff0080]' : ''}`}
+                        style={{
+                          transition: 'color 0.3s ease',
+                          transitionDelay: `${delay}ms`
+                        }}
+                      >
+                        {char === ' ' ? '\u00A0' : char}
+                      </span>
+                    );
+                  })}
+                </span>
+              </motion.h2>
+              <p className="hidden md:block text-sm text-gray-500">Click cards for full details</p>
             </div>
             <div className="space-y-4">
               {experience.map((job, index) => {
@@ -1221,21 +1325,36 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
                           <span>{job.location}</span>
                         </div>
                       </div>
-                      <div className="flex items-center gap-3 mt-1 md:mt-0">
-                        <div className="text-sm text-gray-400">
-                          {job.period}
+                      <div className="flex flex-col items-end gap-1.5 mt-1 md:mt-0">
+                        <div className="flex items-center gap-3">
+                          <div className="text-sm text-gray-400">
+                            {job.period}
+                          </div>
+                          {(job as any).demoLink && (
+                            <a
+                              href={(job as any).demoLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-1 px-3 py-1 bg-[#4d9eff] text-white text-xs rounded-md hover:bg-[#3d8eef] transition-colors whitespace-nowrap"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                // Show dialog for Video Demo links
+                                if (index === 2 || index === 3 || index === 5) {
+                                  e.preventDefault();
+                                  setShowVideoDialog(true);
+                                }
+                              }}
+                            >
+                              <ExternalLink className="w-3 h-3" />
+                              <span>{index === 2 || index === 3 || index === 5 ? 'Video Demo' : 'Live Demo'}</span>
+                            </a>
+                          )}
                         </div>
-                        {(job as any).demoLink && (
-                          <a
-                            href={(job as any).demoLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-1 px-3 py-1 bg-[#4d9eff] text-white text-xs rounded-md hover:bg-[#3d8eef] transition-colors whitespace-nowrap"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <ExternalLink className="w-3 h-3" />
-                            <span>Live Demo</span>
-                          </a>
+                        {/* Disclaimer pill for Currus AI (index 1) */}
+                        {index === 1 && (
+                          <span className="px-2 py-0.5 md:px-2.5 md:py-0.5 bg-red-500/20 border border-red-500/50 text-red-400 rounded-full text-[8px] md:text-[10px] whitespace-normal md:whitespace-nowrap max-w-[200px] md:max-w-none text-center">
+                            NOTE: Client updating site post-delivery, functionality may be impacted
+                          </span>
                         )}
                       </div>
                     </div>
@@ -1344,6 +1463,15 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
                   ? 'bg-black text-white hover:bg-gray-800'
                   : 'bg-white text-black hover:bg-gray-200'
               }`}
+              onClick={() => {
+                onBack();
+                setTimeout(() => {
+                  const contactSection = document.getElementById('contact');
+                  if (contactSection) {
+                    contactSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                }, 100);
+              }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -1364,6 +1492,36 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
           </motion.div>
         </div>
       </section>
+
+      {/* Video Demo Dialog */}
+      {showVideoDialog && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+          onClick={() => setShowVideoDialog(false)}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="bg-[#111111] border border-white/10 rounded-2xl p-8 max-w-md mx-4 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="text-center">
+              <div className="mb-4 text-4xl">🎥</div>
+              <h3 className="text-xl font-semibold mb-3 text-white">Video Coming Soon</h3>
+              <p className="text-gray-400 mb-6">
+                Pending authorization from NDA signatory
+              </p>
+              <button
+                onClick={() => setShowVideoDialog(false)}
+                className="px-6 py-2 bg-[#4d9eff] text-white rounded-lg hover:bg-[#3d8eef] transition-colors"
+              >
+                Got it
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 }

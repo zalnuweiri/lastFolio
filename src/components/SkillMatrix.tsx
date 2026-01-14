@@ -19,7 +19,7 @@ export function SkillMatrix({ theme }: SkillMatrixProps) {
     { name: 'UI UX Design', level: 92, checked: true, years: 7 },
     { name: 'Interaction Design', level: 88, checked: true, years: 6 },
     { name: 'Website Design', level: 85, checked: true, years: 9 },
-    { name: 'User Research', level: 78, checked: true, years: 5 },
+    { name: 'User Research', level: 75, checked: true, years: 5 },
     { name: 'Usability Testing', level: 75, checked: true, years: 4 },
     { name: 'Front-end Development', level: 82, checked: true, years: 6 },
     { name: 'Prototyping', level: 90, checked: true, years: 7 },
@@ -157,12 +157,11 @@ export function SkillMatrix({ theme }: SkillMatrixProps) {
       </div>
 
       {/* Header */}
-      <div className="flex justify-between items-start mb-3 md:mb-4 relative z-10">
-        <div className="text-xs text-gray-600"></div>
-        <div className="hidden md:flex text-xs">
-          <div className="text-gray-600 -ml-2">YEARS</div>
-          <div className="text-gray-600 ml-32">TOOL</div>
-        </div>
+      <div className="relative mb-3 md:mb-4 z-10 h-4">
+        {/* CONCEPTS label - positioned over the skills column */}
+        <div className="absolute left-0 text-xs text-gray-600">CONCEPTS</div>
+        {/* YEARS label - positioned over the years column */}
+        <div className="absolute right-0 text-xs text-gray-600">YEARS</div>
       </div>
 
       {/* Main content area with skills and graph */}
@@ -191,45 +190,9 @@ export function SkillMatrix({ theme }: SkillMatrixProps) {
           ))}
         </div>
 
-        {/* Years column (middle) */}
-        <div className="absolute left-38 md:left-56 top-0 bottom-0 w-12 md:w-16 flex flex-col justify-between text-left z-10 pl-2">
-          {skills.map((skill, index) => (
-            <motion.div
-              key={index}
-              className="text-[10px] md:text-xs overflow-visible"
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-            >
-              <motion.div 
-                className={hoveredSkillIndex === index ? 'text-white' : 'text-gray-600'}
-                animate={{
-                  scale: hoveredSkillIndex === index ? 1.2 : 1,
-                }}
-                transition={{ duration: 0.2 }}
-                style={{ display: 'inline-block', transformOrigin: 'left center' }}
-              >
-                {hoveredSkillIndex === index ? (
-                  <>
-                    <CountUp 
-                      from={0} 
-                      to={skill.years} 
-                      duration={0.6}
-                      startWhen={true}
-                    />
-                    y
-                  </>
-                ) : (
-                  `${skill.years}y`
-                )}
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Tools percentages (right side) */}
+        {/* Years column (right side) */}
         <div className="absolute right-0 top-0 bottom-0 w-12 md:w-20 flex flex-col justify-between text-right z-10">
-          {tools.map((tool, index) => (
+          {skills.map((skill, index) => (
             <motion.div
               key={index}
               className="text-[10px] md:text-xs overflow-visible"
@@ -249,14 +212,14 @@ export function SkillMatrix({ theme }: SkillMatrixProps) {
                   <>
                     <CountUp 
                       from={0} 
-                      to={tool.percentage} 
+                      to={skill.years} 
                       duration={0.6}
                       startWhen={true}
                     />
-                    %
+                    y
                   </>
                 ) : (
-                  `${tool.percentage}%`
+                  `${skill.years}y`
                 )}
               </motion.div>
             </motion.div>

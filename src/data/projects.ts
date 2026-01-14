@@ -23,7 +23,7 @@ export const projects: Project[] = [
     title: 'Silent H Bar & Restaurant', 
     category: 'Development', 
     description: 'Figma -> Live modular react website, freelance contract',
-    year: '2024'
+    year: '2025'
   },
   { 
     id: 2, 
@@ -31,7 +31,7 @@ export const projects: Project[] = [
     title: 'MetaCiti website', 
     category: 'Development', 
     description: 'Redesigned and built modular React website for Currus AI metaciti division',
-    year: '2023'
+    year: '2025'
   },
   { 
     id: 3, 
@@ -39,7 +39,7 @@ export const projects: Project[] = [
     title: 'MetaCiti App Dashboard/UI', 
     category: 'Development', 
     description: 'Worked on React Typescript Project, adding UI fixes, and connecting frontend additions to new backend functions',
-    year: '2024'
+    year: '2025'
   },
   { 
     id: 4, 
@@ -47,7 +47,7 @@ export const projects: Project[] = [
     title: 'Python-based BCI game', 
     category: 'Development', 
     description: 'Second contract with Zeuron, this time leading development of a Python BCI game. Delivered game except for one level, which was essentially a second game within the game that required completely different mechanics',
-    year: '2024'
+    year: '2025'
   },
   { 
     id: 5, 

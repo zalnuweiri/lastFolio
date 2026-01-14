@@ -22,6 +22,7 @@ import { ProjectsPage } from './components/ProjectsPage';
 import { AboutPage } from './components/AboutPage';
 import { Home } from './pages/Home';
 import { StatsBar } from './components/StatsBar';
+import { ContactModal } from './components/ContactModal';
 import './styles/globals.css';
 
 // Import images for ProfileCard
@@ -29,6 +30,7 @@ import iconPattern from 'figma:asset/1c106d8af8bb3cd1b97b128c08f0b37f00ed9a89.pn
 import subjectImage from 'figma:asset/a001169128c5bca6a9577aec9121ffc7ea0a096c.png';
 import miniAvatar from 'figma:asset/2cf5a99dc9fa1fb0c8cd1786327a5c2628d36126.png';
 import grainTexture from 'figma:asset/57d9067b26665fb6aaa11e8cac6523c5fb7a5da4.png';
+import cvFile from 'figma:asset/a772e554a7dad7ee8839521a8db6af8472cb9160.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -39,6 +41,7 @@ export default function App() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark');
   const [currentPage, setCurrentPage] = useState<string>('Dashboard');
   const [scrollToProjectId, setScrollToProjectId] = useState<number | null>(null);
+  const [showContactModal, setShowContactModal] = useState(false);
 
   const handleViewFullProject = (projectId: number) => {
     setSelectedProject(null); // Close modal
@@ -98,6 +101,11 @@ export default function App() {
       document.documentElement.classList.add('reduce-motion');
     }
   }, []);
+
+  // Scroll to top when page changes
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
 
   if (loading) {
     return <LoadingScreen />;
@@ -196,8 +204,16 @@ export default function App() {
                     subjectImage={subjectImage}
                     miniAvatar={miniAvatar}
                     grainUrl={grainTexture}
-                    onContactClick={() => window.open('mailto:zayd@example.com', '_blank')}
-                    onViewCVClick={() => window.open('/cv.pdf', '_blank')}
+                    onContactClick={() => setShowContactModal(true)}
+                    onViewCVClick={() => {
+                      // Create a temporary link to download the CV
+                      const link = document.createElement('a');
+                      link.href = cvFile;
+                      link.download = 'Zayd_Alnuweiri_CV.png';
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
+                    }}
                     onNameClick={() => setCurrentPage('About')}
                   />
                 </div>
@@ -248,6 +264,13 @@ export default function App() {
           onViewFullProject={handleViewFullProject}
         />
       )}
+
+      {/* Contact Modal */}
+      <ContactModal
+        isOpen={showContactModal}
+        onClose={() => setShowContactModal(false)}
+        theme={theme}
+      />
     </div>
   );
 }
