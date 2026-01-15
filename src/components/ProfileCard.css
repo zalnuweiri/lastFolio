@@ -564,8 +564,8 @@
 
   /* Avatar Section - smaller and pushed UP */
   .pc-avatar-content .avatar {
-    transform: translateX(-50%) scale(0.35);
-    top: -60px;
+    transform: translateX(-50%) scale(0.4025);
+    top: -82.5px;
     bottom: auto;
   }
 

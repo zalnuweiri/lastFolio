@@ -258,7 +258,7 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
       location: 'Doha, Qatar',
       period: 'January 2015 - June 2018',
       description: 'Assisted with marketing materials, customer outreach, and supported early web presence development.',
-      demoLink: '#',
+      demoLink: 'https://almarkhiyagallery.com/',
       highlights: [
         'Created marketing materials and managed customer outreach',
         'Developed gallery\'s web presence and event posting site',
@@ -589,13 +589,13 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
 
       {/* Bento Box Main Content */}
       <section 
-        className={`w-full py-12 px-4 md:px-8 ${
+        className={`w-full py-12 px-4 md:px-8 2xl:py-16 2xl:px-12 ${
           theme === 'light' ? 'bg-white' : 'bg-black'
         }`}
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl 2xl:max-w-[1600px] mx-auto">
           {/* Section Header */}
-          <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center justify-between mb-8 2xl:mb-12">
             <motion.h2
               className="group inline-block relative text-[2.1rem] md:text-[2.85rem] lg:text-[3.42rem] cursor-pointer overflow-visible"
               style={{ fontFamily: "'Righteous', sans-serif" }}
@@ -636,7 +636,7 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
             
             <motion.a
               href={cvFile}
-              download="Zayd-Resume-Short.pdf"
+              download="Zayd_Alnuweiri_CV.png"
               className="flex items-center gap-1.5 px-3 py-1.5 md:px-6 md:py-3 text-xs md:text-base bg-[#4d9eff] text-white rounded-lg hover:bg-[#3d8eef] transition-colors whitespace-nowrap"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -650,21 +650,21 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
           </div>
 
           {/* Bento Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 2xl:gap-6 auto-rows-auto">
             
             {/* Quick Facts - spans 2 columns */}
             <motion.div
-              className="lg:col-span-2 bg-[#111111] rounded-2xl p-6 text-white"
+              className="lg:col-span-2 bg-[#111111] rounded-2xl p-6 2xl:p-8 text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ y: -3 }}
             >
-              <div className="flex items-center gap-2 mb-4">
-                <User className="w-5 h-5 text-[#4d9eff]" />
-                <h3 className="text-xl">Quick Facts</h3>
+              <div className="flex items-center gap-2 mb-4 2xl:mb-6">
+                <User className="w-5 h-5 2xl:w-6 2xl:h-6 text-[#4d9eff]" />
+                <h3 className="text-xl 2xl:text-2xl">Quick Facts</h3>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 2xl:gap-4">
                 {quickFacts.map((fact) => (
                   <div key={fact.label} className="flex items-center gap-2">
                     <fact.icon className="w-4 h-4 text-gray-400 flex-shrink-0" />
@@ -687,17 +687,17 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
 
             {/* Key Achievements - spans 2 columns */}
             <motion.div
-              className="lg:col-span-2 bg-gradient-to-r from-[#4d9eff]/10 to-[#ff0080]/10 border border-[#4d9eff]/20 rounded-2xl p-6"
+              className="lg:col-span-2 bg-[#111111] border border-[#4d9eff]/20 rounded-2xl p-6 2xl:p-8 text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ y: -3 }}
             >
-              <div className="flex items-center gap-2 mb-10">
-                <TrendingUp className="w-5 h-5 text-[#4d9eff]" />
-                <h3 className="text-xl">Core Strengths</h3>
+              <div className="flex items-center gap-2 mb-10 2xl:mb-12">
+                <TrendingUp className="w-5 h-5 2xl:w-6 2xl:h-6 text-[#4d9eff]" />
+                <h3 className="text-xl 2xl:text-2xl">Core Strengths</h3>
               </div>
-              <div className="grid grid-cols-2 gap-6">
+              <div className="grid grid-cols-2 gap-6 2xl:gap-8">
                 {coreStrengths.map((strength) => (
                   <div key={strength.label} className="text-gray-300 text-lg">
                     {strength.label}
@@ -708,15 +708,15 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
 
             {/* Professional Summary - spans 2 columns, 2 rows */}
             <motion.div
-              className="lg:col-span-2 lg:row-span-2 bg-[#111111] rounded-2xl p-6 text-white"
+              className="lg:col-span-2 lg:row-span-2 bg-[#111111] rounded-2xl p-6 2xl:p-8 text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ y: -3 }}
             >
-              <div className="flex items-center gap-2 mb-4">
-                <User className="w-5 h-5 text-[#4d9eff]" />
-                <h3 className="text-xl">Professional Summary</h3>
+              <div className="flex items-center gap-2 mb-4 2xl:mb-6">
+                <User className="w-5 h-5 2xl:w-6 2xl:h-6 text-[#4d9eff]" />
+                <h3 className="text-xl 2xl:text-2xl">Professional Summary</h3>
               </div>
               <p className="text-gray-300 text-[13px] leading-relaxed mb-3">
                 Working professional with almost 10 years of experience across numerous disciplines. Started in Customer Relations Management with Al-Markhiya Gallery. Experienced Web Design for the first time there, and partook in bookkeeping, invoicing, and customer service. Worked in Event Planning and Manufacturing at Fetish Records in New York City. In University, I pursued Sociology and Public Policy, but transferred to Computer Science after feeling unchallenged, though the former discipline remains one of my most cherished passions.
@@ -731,7 +731,7 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
 
             {/* Education */}
             <motion.div
-              className="lg:col-span-2 relative bg-[#242424] rounded-2xl p-6 text-white overflow-hidden border border-[#FFD400]/50"
+              className="lg:col-span-2 relative bg-[#242424] rounded-2xl p-6 2xl:p-8 text-white overflow-hidden border border-[#FFD400]/50"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -773,17 +773,17 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
 
             {/* Tech Stack - Frontend */}
             <motion.div
-              className="bg-[#111111] rounded-2xl p-6 text-white"
+              className="bg-[#111111] rounded-2xl p-6 2xl:p-8 text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ y: -3 }}
             >
-              <div className="flex items-center gap-2 mb-3">
-                <Palette className="w-5 h-5 text-[#4d9eff]" />
-                <h3 className="text-lg">Frontend</h3>
+              <div className="flex items-center gap-2 mb-3 2xl:mb-4">
+                <Palette className="w-5 h-5 2xl:w-6 2xl:h-6 text-[#4d9eff]" />
+                <h3 className="text-lg 2xl:text-xl">Frontend</h3>
               </div>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-1.5 2xl:gap-2">
                 {techStack.frontend.slice(0, 6).map((tech) => (
                   <span
                     key={tech}
@@ -797,17 +797,17 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
 
             {/* Tech Stack - Backend */}
             <motion.div
-              className="bg-[#111111] rounded-2xl p-6 text-white"
+              className="bg-[#111111] rounded-2xl p-6 2xl:p-8 text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ y: -3 }}
             >
-              <div className="flex items-center gap-2 mb-3">
-                <Database className="w-5 h-5 text-[#4d9eff]" />
-                <h3 className="text-lg">Backend</h3>
+              <div className="flex items-center gap-2 mb-3 2xl:mb-4">
+                <Database className="w-5 h-5 2xl:w-6 2xl:h-6 text-[#4d9eff]" />
+                <h3 className="text-lg 2xl:text-xl">Backend</h3>
               </div>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-1.5 2xl:gap-2">
                 {techStack.backend.slice(0, 6).map((tech) => (
                   <span
                     key={tech}
@@ -821,17 +821,17 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
 
             {/* Tech Stack - Tools */}
             <motion.div
-              className="bg-[#111111] rounded-2xl p-6 text-white"
+              className="bg-[#111111] rounded-2xl p-6 2xl:p-8 text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ y: -3 }}
             >
-              <div className="flex items-center gap-2 mb-3">
-                <Terminal className="w-5 h-5 text-[#4d9eff]" />
-                <h3 className="text-lg">Tools</h3>
+              <div className="flex items-center gap-2 mb-3 2xl:mb-4">
+                <Terminal className="w-5 h-5 2xl:w-6 2xl:h-6 text-[#4d9eff]" />
+                <h3 className="text-lg 2xl:text-xl">Tools</h3>
               </div>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-1.5 2xl:gap-2">
                 {techStack.tools.slice(0, 6).map((tech) => (
                   <span
                     key={tech}
@@ -845,62 +845,62 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
 
             {/* Currently - Working On */}
             <motion.div
-              className="bg-[#111111] rounded-2xl p-6 text-white"
+              className="bg-[#111111] rounded-2xl p-6 2xl:p-8 text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ y: -3 }}
             >
-              <div className="flex items-center gap-2 mb-3">
-                <Briefcase className="w-5 h-5 text-[#4d9eff]" />
-                <h3 className="text-lg">Working On</h3>
+              <div className="flex items-center gap-2 mb-3 2xl:mb-4">
+                <Briefcase className="w-5 h-5 2xl:w-6 2xl:h-6 text-[#4d9eff]" />
+                <h3 className="text-lg 2xl:text-xl">Working On</h3>
               </div>
               <p className="text-gray-300 text-sm">{currently.working}</p>
             </motion.div>
 
             {/* Currently - Learning */}
             <motion.div
-              className="bg-[#111111] rounded-2xl p-6 text-white"
+              className="bg-[#111111] rounded-2xl p-6 2xl:p-8 text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ y: -3 }}
             >
-              <div className="flex items-center gap-2 mb-3">
-                <BookOpen className="w-5 h-5 text-[#4d9eff]" />
-                <h3 className="text-lg">Learning</h3>
+              <div className="flex items-center gap-2 mb-3 2xl:mb-4">
+                <BookOpen className="w-5 h-5 2xl:w-6 2xl:h-6 text-[#4d9eff]" />
+                <h3 className="text-lg 2xl:text-xl">Learning</h3>
               </div>
               <p className="text-gray-300 text-sm">{currently.learning}</p>
             </motion.div>
 
             {/* Currently - Exploring */}
             <motion.div
-              className="bg-[#111111] rounded-2xl p-6 text-white"
+              className="bg-[#111111] rounded-2xl p-6 2xl:p-8 text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ y: -3 }}
             >
-              <div className="flex items-center gap-2 mb-3">
-                <ExternalLink className="w-5 h-5 text-[#4d9eff]" />
-                <h3 className="text-lg">Exploring</h3>
+              <div className="flex items-center gap-2 mb-3 2xl:mb-4">
+                <ExternalLink className="w-5 h-5 2xl:w-6 2xl:h-6 text-[#4d9eff]" />
+                <h3 className="text-lg 2xl:text-xl">Exploring</h3>
               </div>
               <p className="text-gray-300 text-sm">{currently.exploring}</p>
             </motion.div>
 
             {/* Additional Skills - Spans 2 columns */}
             <motion.div
-              className="lg:col-span-2 bg-[#111111] rounded-2xl p-6 text-white"
+              className="lg:col-span-2 bg-[#111111] rounded-2xl p-6 2xl:p-8 text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ y: -3 }}
             >
-              <div className="flex items-center gap-2 mb-4">
-                <Award className="w-5 h-5 text-[#4d9eff]" />
-                <h3 className="text-lg">Additional Skills</h3>
+              <div className="flex items-center gap-2 mb-4 2xl:mb-6">
+                <Award className="w-5 h-5 2xl:w-6 2xl:h-6 text-[#4d9eff]" />
+                <h3 className="text-lg 2xl:text-xl">Additional Skills</h3>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 2xl:gap-3">
                 {[
                   { skill: 'Fluent in Arabic', color: '#4d9eff', icon: BookOpen },
                   { skill: 'NOLS & Outward Bound Graduate', color: '#00ffd1', icon: Award },
@@ -980,17 +980,17 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
 
             {/* Original Interests - Spans 4 columns */}
             <motion.div
-              className="lg:col-span-4 bg-[#111111] rounded-2xl p-6 text-white"
+              className="lg:col-span-4 bg-[#111111] rounded-2xl p-6 2xl:p-8 text-white"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ y: -3 }}
             >
-              <div className="flex items-center gap-2 mb-3">
-                <Palette className="w-5 h-5 text-[#4d9eff]" />
-                <h3 className="text-lg">Professional Interests</h3>
+              <div className="flex items-center gap-2 mb-3 2xl:mb-4">
+                <Palette className="w-5 h-5 2xl:w-6 2xl:h-6 text-[#4d9eff]" />
+                <h3 className="text-lg 2xl:text-xl">Professional Interests</h3>
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 2xl:gap-2.5">
                 {interests.map((interest) => (
                   <span
                     key={interest}
@@ -1008,13 +1008,13 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
       {/* Technical Skills Section - Comprehensive & Expandable */}
       <section 
         id="technical-skills"
-        className={`w-full py-12 px-4 md:px-8 ${
+        className={`w-full py-12 px-4 md:px-8 2xl:py-16 2xl:px-12 ${
           theme === 'light' ? 'bg-white' : 'bg-black'
         }`}
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl 2xl:max-w-[1600px] mx-auto">
           {/* Section Header */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8 2xl:mb-12">
             <motion.h2
               className="group inline-block relative text-4xl md:text-5xl lg:text-6xl cursor-pointer overflow-visible"
               style={{ fontFamily: "'Righteous', sans-serif" }}
@@ -1067,7 +1067,7 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
           </div>
 
           {/* Skills Grid - Expandable Categories */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 2xl:gap-6">
             {Object.entries(filteredSkills).map(([category, data], index) => {
               const isExpanded = expandedCategories.includes(category);
               const IconComponent = data.icon;
@@ -1076,7 +1076,7 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
               return (
                 <motion.div
                   key={category}
-                  className="bg-[#111111] rounded-2xl p-6 text-white border border-gray-800/50 hover:border-gray-700/50 transition-all"
+                  className="bg-[#111111] rounded-2xl p-6 2xl:p-8 text-white border border-gray-800/50 hover:border-gray-700/50 transition-all"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -1193,14 +1193,14 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
 
       {/* Audio Visualizer Section */}
       <section 
-        className={`w-full py-12 px-4 md:px-8 ${
+        className={`w-full py-12 px-4 md:px-8 2xl:py-16 2xl:px-12 ${
           theme === 'light' ? 'bg-white' : 'bg-black'
         }`}
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl 2xl:max-w-[1600px] mx-auto">
           {/* Section Header */}
           <motion.h2
-            className="group inline-block relative text-4xl md:text-5xl lg:text-6xl cursor-pointer overflow-visible mb-8"
+            className="group inline-block relative text-4xl md:text-5xl lg:text-6xl cursor-pointer overflow-visible mb-8 2xl:mb-12"
             style={{ fontFamily: "'Righteous', sans-serif" }}
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -1256,18 +1256,18 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
       {/* Work Experience Timeline - Compact */}
       <section 
         id="experience"
-        className={`w-full py-12 px-4 md:px-8 ${
+        className={`w-full py-12 px-4 md:px-8 2xl:py-16 2xl:px-12 ${
           theme === 'light' ? 'bg-white' : 'bg-black'
         }`}
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl 2xl:max-w-[1600px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center justify-between mb-6 2xl:mb-10">
               <motion.h2
                 className="group inline-block relative text-4xl md:text-5xl lg:text-6xl cursor-pointer overflow-visible"
                 style={{ fontFamily: "'Righteous', sans-serif" }}
@@ -1302,13 +1302,13 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
               </motion.h2>
               <p className="hidden md:block text-sm text-gray-500">Click cards for full details</p>
             </div>
-            <div className="space-y-4">
+            <div className="space-y-4 2xl:space-y-6">
               {experience.map((job, index) => {
                 const isExpanded = expandedExperience.includes(index);
                 return (
                   <motion.div
                     key={job.title + index}
-                    className="bg-[#111111] rounded-xl p-6 text-white border border-gray-800/50 hover:border-gray-700/50 transition-all"
+                    className="bg-[#111111] rounded-xl p-6 2xl:p-8 text-white border border-gray-800/50 hover:border-gray-700/50 transition-all"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}

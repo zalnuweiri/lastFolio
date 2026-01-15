@@ -177,7 +177,7 @@ export function Contact({ theme }: ContactProps) {
             </div>
 
             <div>
-              <h4 className="text-lg mb-4">Connect With Me</h4>
+              <h4 className="text-lg mb-4 text-white">Connect With Me</h4>
               <div className="flex gap-4">
                 {socialLinks.map((link, index) => (
                   <motion.a
@@ -190,7 +190,7 @@ export function Contact({ theme }: ContactProps) {
                     whileHover={{ y: -5 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <link.icon className="w-5 h-5" />
+                    <link.icon className="w-5 h-5 text-white" />
                   </motion.a>
                 ))}
               </div>

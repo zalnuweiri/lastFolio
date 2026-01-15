@@ -365,7 +365,7 @@ export function ProjectsPage({ theme, onBack, scrollToProjectId }: ProjectsPageP
       </section>
 
       {/* Business Outcomes Section with ScrollStack */}
-      <section className="bg-[#0b0615] py-20" ref={businessOutcomesRef}>
+      <section className="bg-[#0b0615] py-20 text-white" ref={businessOutcomesRef}>
         <div className="px-8 pb-12">
           <div className="max-w-5xl mx-auto">
             <motion.h2
@@ -418,7 +418,7 @@ export function ProjectsPage({ theme, onBack, scrollToProjectId }: ProjectsPageP
               >
                 {/* Project Card 1 - Loaded */}
                 <ScrollStackItem itemClassName="custom-project-card">
-                  <div className="bg-[#111111] border border-gray-800/50 rounded-3xl overflow-hidden h-full p-6 md:p-8">
+                  <div className="bg-[#111111] border border-gray-800/50 rounded-3xl overflow-hidden h-full p-6 md:p-8 text-white">
                     {/* Project Header */}
                     <div className="flex items-start justify-between mb-6">
                       <div>

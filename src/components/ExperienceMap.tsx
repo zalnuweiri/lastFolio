@@ -27,23 +27,23 @@ export function ExperienceMap() {
     const generatedDots = [];
     const rows = 40;
     const cols = 100;
-
+    
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols; col++) {
         // Create landmass patterns (simplified continents)
-        const isLand =
-            // North America
-            (row >= 10 && row <= 25 && col >= 10 && col <= 30) ||
-            // South America
-            (row >= 25 && row <= 35 && col >= 18 && col <= 28) ||
-            // Europe
-            (row >= 10 && row <= 22 && col >= 32 && col <= 45) ||
-            // Africa
-            (row >= 18 && row <= 35 && col >= 35 && col <= 50) ||
-            // Asia
-            (row >= 8 && row <= 30 && col >= 50 && col <= 80) ||
-            // Australia
-            (row >= 28 && row <= 36 && col >= 75 && col <= 85);
+        const isLand = 
+          // North America
+          (row >= 10 && row <= 25 && col >= 10 && col <= 30) ||
+          // South America
+          (row >= 25 && row <= 35 && col >= 18 && col <= 28) ||
+          // Europe
+          (row >= 10 && row <= 22 && col >= 32 && col <= 45) ||
+          // Africa
+          (row >= 18 && row <= 35 && col >= 35 && col <= 50) ||
+          // Asia
+          (row >= 8 && row <= 30 && col >= 50 && col <= 80) ||
+          // Australia
+          (row >= 28 && row <= 36 && col >= 75 && col <= 85);
 
         if (isLand && Math.random() > 0.5) {
           generatedDots.push({
@@ -53,7 +53,7 @@ export function ExperienceMap() {
         }
       }
     }
-
+    
     setDots(generatedDots);
   }, []);
 
@@ -70,8 +70,8 @@ export function ExperienceMap() {
   };
 
   return (
-      <>
-        <style>{`
+    <>
+      <style>{`
         /* Pin positioning for all breakpoints */
         /* XL breakpoint (1280px+) - Desktop - CORRECT POSITIONS */
         @media (min-width: 1280px) {
@@ -113,206 +113,206 @@ export function ExperienceMap() {
           .pin-sixth { left: calc(34% + 4px - 2%); top: 47.5%; }
         }
       `}</style>
-        <motion.div
-            ref={cardRef}
-            className={`rounded-3xl p-4 border bg-[#111111] border-gray-800/50 h-full relative group cursor-pointer overflow-hidden`}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            whileHover={{ scale: 1.01 }}
-            transition={{ duration: 0.3 }}
+      <motion.div
+        ref={cardRef}
+        className={`rounded-3xl p-4 border bg-[#111111] border-gray-800/50 h-full relative group cursor-pointer overflow-hidden`}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        whileHover={{ scale: 1.01 }}
+        transition={{ duration: 0.3 }}
+        style={{
+          transformStyle: 'preserve-3d',
+          transform: `perspective(1000px) rotateX(${-mousePosition.y}deg) rotateY(${mousePosition.x}deg)`,
+        }}
+      >
+        {/* Glow effect */}
+        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-48 bg-gradient-to-r from-green-500/10 via-cyan-500/10 to-purple-500/10 rounded-full filter blur-3xl" />
+        </div>
+
+        {/* Header */}
+        <div className="text-[10px] text-gray-600 mb-2 relative z-10">06 MY EXPERIENCE</div>
+
+        {/* Map container */}
+        <div className="relative h-[calc(100%-2rem)]">
+          {/* World map image */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <img 
+              src={worldMap} 
+              alt="World Map" 
+              className="w-full h-full object-contain opacity-60"
+            />
+          </div>
+
+          {/* Vancouver location marker */}
+          <motion.div
+            className="absolute pin-vancouver"
             style={{
-              transformStyle: 'preserve-3d',
-              transform: `perspective(1000px) rotateX(${-mousePosition.y}deg) rotateY(${mousePosition.x}deg)`,
+              transform: 'translate(-50%, -50%)',
             }}
-        >
-          {/* Glow effect */}
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-48 bg-gradient-to-r from-green-500/10 via-cyan-500/10 to-purple-500/10 rounded-full filter blur-3xl" />
-          </div>
-
-          {/* Header */}
-          <div className="text-[10px] text-gray-600 mb-2 relative z-10">06 MY EXPERIENCE</div>
-
-          {/* Map container */}
-          <div className="relative h-[calc(100%-2rem)]">
-            {/* World map image */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <img
-                  src={worldMap}
-                  alt="World Map"
-                  className="w-full h-full object-contain opacity-60"
-              />
-            </div>
-
-            {/* Vancouver location marker */}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.5, type: 'spring' }}
+          >
+            {/* Pulsing ring */}
             <motion.div
-                className="absolute pin-vancouver"
-                style={{
-                  transform: 'translate(-50%, -50%)',
-                }}
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.5, type: 'spring' }}
-            >
-              {/* Pulsing ring */}
-              <motion.div
-                  className="absolute inset-0 rounded-full bg-cyan-500/30"
-                  style={{ width: '16px', height: '16px' }}
-                  animate={{
-                    scale: [1, 1.8, 1],
-                    opacity: [0.5, 0, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-              />
-              {/* Main dot */}
-              <div className="relative rounded-full bg-cyan-400 shadow-lg shadow-cyan-500/50" style={{ width: '8px', height: '8px' }} />
-            </motion.div>
+              className="absolute inset-0 rounded-full bg-cyan-500/30"
+              style={{ width: '16px', height: '16px' }}
+              animate={{
+                scale: [1, 1.8, 1],
+                opacity: [0.5, 0, 0.5],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
+            {/* Main dot */}
+            <div className="relative rounded-full bg-cyan-400 shadow-lg shadow-cyan-500/50" style={{ width: '8px', height: '8px' }} />
+          </motion.div>
 
-            {/* Lebanon location marker */}
+          {/* Lebanon location marker */}
+          <motion.div
+            className="absolute pin-lebanon"
+            style={{
+              transform: 'translate(-50%, -50%)',
+            }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.5, type: 'spring' }}
+          >
+            {/* Pulsing ring */}
             <motion.div
-                className="absolute pin-lebanon"
-                style={{
-                  transform: 'translate(-50%, -50%)',
-                }}
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.5, duration: 0.5, type: 'spring' }}
-            >
-              {/* Pulsing ring */}
-              <motion.div
-                  className="absolute inset-0 rounded-full bg-red-500/30"
-                  style={{ width: '16px', height: '16px' }}
-                  animate={{
-                    scale: [1, 1.8, 1],
-                    opacity: [0.5, 0, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-              />
-              {/* Main dot */}
-              <div className="relative rounded-full bg-red-400 shadow-lg shadow-red-500/50" style={{ width: '8px', height: '8px' }} />
-            </motion.div>
+              className="absolute inset-0 rounded-full bg-red-500/30"
+              style={{ width: '16px', height: '16px' }}
+              animate={{
+                scale: [1, 1.8, 1],
+                opacity: [0.5, 0, 0.5],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
+            {/* Main dot */}
+            <div className="relative rounded-full bg-red-400 shadow-lg shadow-red-500/50" style={{ width: '8px', height: '8px' }} />
+          </motion.div>
 
-            {/* Third location marker */}
+          {/* Third location marker */}
+          <motion.div
+            className="absolute pin-third"
+            style={{
+              transform: 'translate(-50%, -50%)',
+            }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.7, duration: 0.5, type: 'spring' }}
+          >
+            {/* Pulsing ring */}
             <motion.div
-                className="absolute pin-third"
-                style={{
-                  transform: 'translate(-50%, -50%)',
-                }}
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.7, duration: 0.5, type: 'spring' }}
-            >
-              {/* Pulsing ring */}
-              <motion.div
-                  className="absolute inset-0 rounded-full bg-green-500/30"
-                  style={{ width: '16px', height: '16px' }}
-                  animate={{
-                    scale: [1, 1.8, 1],
-                    opacity: [0.5, 0, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-              />
-              {/* Main dot */}
-              <div className="relative rounded-full bg-green-400 shadow-lg shadow-green-500/50" style={{ width: '8px', height: '8px' }} />
-            </motion.div>
+              className="absolute inset-0 rounded-full bg-green-500/30"
+              style={{ width: '16px', height: '16px' }}
+              animate={{
+                scale: [1, 1.8, 1],
+                opacity: [0.5, 0, 0.5],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
+            {/* Main dot */}
+            <div className="relative rounded-full bg-green-400 shadow-lg shadow-green-500/50" style={{ width: '8px', height: '8px' }} />
+          </motion.div>
 
-            {/* Fourth location marker */}
+          {/* Fourth location marker */}
+          <motion.div
+            className="absolute pin-fourth"
+            style={{
+              transform: 'translate(-50%, -50%)',
+            }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.9, duration: 0.5, type: 'spring' }}
+          >
+            {/* Pulsing ring */}
             <motion.div
-                className="absolute pin-fourth"
-                style={{
-                  transform: 'translate(-50%, -50%)',
-                }}
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.9, duration: 0.5, type: 'spring' }}
-            >
-              {/* Pulsing ring */}
-              <motion.div
-                  className="absolute inset-0 rounded-full bg-purple-500/30"
-                  style={{ width: '16px', height: '16px' }}
-                  animate={{
-                    scale: [1, 1.8, 1],
-                    opacity: [0.5, 0, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-              />
-              {/* Main dot */}
-              <div className="relative rounded-full bg-purple-400 shadow-lg shadow-purple-500/50" style={{ width: '8px', height: '8px' }} />
-            </motion.div>
+              className="absolute inset-0 rounded-full bg-purple-500/30"
+              style={{ width: '16px', height: '16px' }}
+              animate={{
+                scale: [1, 1.8, 1],
+                opacity: [0.5, 0, 0.5],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
+            {/* Main dot */}
+            <div className="relative rounded-full bg-purple-400 shadow-lg shadow-purple-500/50" style={{ width: '8px', height: '8px' }} />
+          </motion.div>
 
-            {/* Fifth location marker */}
+          {/* Fifth location marker */}
+          <motion.div
+            className="absolute pin-fifth"
+            style={{
+              transform: 'translate(-50%, -50%)',
+            }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 1.1, duration: 0.5, type: 'spring' }}
+          >
+            {/* Pulsing ring */}
             <motion.div
-                className="absolute pin-fifth"
-                style={{
-                  transform: 'translate(-50%, -50%)',
-                }}
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 1.1, duration: 0.5, type: 'spring' }}
-            >
-              {/* Pulsing ring */}
-              <motion.div
-                  className="absolute inset-0 rounded-full bg-blue-500/30"
-                  style={{ width: '16px', height: '16px' }}
-                  animate={{
-                    scale: [1, 1.8, 1],
-                    opacity: [0.5, 0, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-              />
-              {/* Main dot */}
-              <div className="relative rounded-full bg-blue-400 shadow-lg shadow-blue-500/50" style={{ width: '8px', height: '8px' }} />
-            </motion.div>
+              className="absolute inset-0 rounded-full bg-blue-500/30"
+              style={{ width: '16px', height: '16px' }}
+              animate={{
+                scale: [1, 1.8, 1],
+                opacity: [0.5, 0, 0.5],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
+            {/* Main dot */}
+            <div className="relative rounded-full bg-blue-400 shadow-lg shadow-blue-500/50" style={{ width: '8px', height: '8px' }} />
+          </motion.div>
 
-            {/* Sixth location marker */}
+          {/* Sixth location marker */}
+          <motion.div
+            className="absolute pin-sixth"
+            style={{
+              transform: 'translate(-50%, -50%)',
+            }}
+            initial={{ scale: 0, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 1.3, duration: 0.5, type: 'spring' }}
+          >
+            {/* Pulsing ring */}
             <motion.div
-                className="absolute pin-sixth"
-                style={{
-                  transform: 'translate(-50%, -50%)',
-                }}
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 1.3, duration: 0.5, type: 'spring' }}
-            >
-              {/* Pulsing ring */}
-              <motion.div
-                  className="absolute inset-0 rounded-full bg-orange-500/30"
-                  style={{ width: '16px', height: '16px' }}
-                  animate={{
-                    scale: [1, 1.8, 1],
-                    opacity: [0.5, 0, 0.5],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: 'easeInOut',
-                  }}
-              />
-              {/* Main dot */}
-              <div className="relative rounded-full bg-orange-400 shadow-lg shadow-orange-500/50" style={{ width: '8px', height: '8px' }} />
-            </motion.div>
-          </div>
-        </motion.div>
-      </>
+              className="absolute inset-0 rounded-full bg-orange-500/30"
+              style={{ width: '16px', height: '16px' }}
+              animate={{
+                scale: [1, 1.8, 1],
+                opacity: [0.5, 0, 0.5],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+                ease: 'easeInOut',
+              }}
+            />
+            {/* Main dot */}
+            <div className="relative rounded-full bg-orange-400 shadow-lg shadow-orange-500/50" style={{ width: '8px', height: '8px' }} />
+          </motion.div>
+        </div>
+      </motion.div>
+    </>
   );
 }
