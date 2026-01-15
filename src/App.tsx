@@ -209,7 +209,7 @@ export default function App() {
                       // Create a temporary link to download the CV
                       const link = document.createElement('a');
                       link.href = cvFile;
-                      link.download = 'Zayd_Alnuweiri_CV.png';
+                      link.download = 'Zayd-Resume-Short.pdf';
                       document.body.appendChild(link);
                       link.click();
                       document.body.removeChild(link);
