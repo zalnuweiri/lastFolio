@@ -23,6 +23,8 @@ import { AboutPage } from './components/AboutPage';
 import { Home } from './pages/Home';
 import { StatsBar } from './components/StatsBar';
 import { ContactModal } from './components/ContactModal';
+import { AnalyticsDashboard } from './components/AnalyticsDashboard';
+import { trackPageView } from './utils/analytics';
 import './styles/globals.css';
 
 // Import images for ProfileCard
@@ -54,6 +56,55 @@ export default function App() {
     setTimeout(() => setLoading(false), 2500);
   }, []);
 
+  // Suppress Three.js duplicate import warning (harmless bundler message)
+  useEffect(() => {
+    const originalWarn = console.warn;
+    const originalError = console.error;
+    const originalLog = console.log;
+    
+    console.warn = (...args) => {
+      const message = args[0]?.toString?.() || '';
+      if (message.includes('Multiple instances of Three') || 
+          message.includes('THREE.')) {
+        return; // Suppress Three.js warnings
+      }
+      originalWarn.apply(console, args);
+    };
+
+    console.error = (...args) => {
+      const message = args[0]?.toString?.() || '';
+      // Only suppress background analytics tracking errors, not dashboard errors
+      if (message.includes('Error in analytics track endpoint') || 
+          message.includes('Failed to track page view')) {
+        return;
+      }
+      originalError.apply(console, args);
+    };
+
+    console.log = (...args) => {
+      const message = args[0]?.toString?.() || '';
+      if (message.includes('Multiple instances of Three') || 
+          message.includes('WARNING: Multiple instances')) {
+        return; // Suppress Three.js logs
+      }
+      originalLog.apply(console, args);
+    };
+
+    return () => {
+      console.warn = originalWarn;
+      console.error = originalError;
+      console.log = originalLog;
+    };
+  }, []);
+
+  // Track page views when the page changes
+  useEffect(() => {
+    if (!loading) {
+      const path = currentPage === 'Dashboard' ? '/' : `/${currentPage.toLowerCase().replace(/\s+/g, '-')}`;
+      trackPageView(path);
+    }
+  }, [currentPage, loading]);
+
   useEffect(() => {
     if (!loading) {
       const ctx = gsap.context(() => {
@@ -83,14 +134,36 @@ export default function App() {
 
   // Keyboard navigation
   useEffect(() => {
+    let ctrlKPressed = false;
+    let ctrlKTimeout: NodeJS.Timeout;
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && selectedProject) {
         setSelectedProject(null);
       }
+      
+      // Secret keyboard shortcut to access analytics: Ctrl/Cmd + K, then A
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        ctrlKPressed = true;
+        // Reset after 2 seconds
+        clearTimeout(ctrlKTimeout);
+        ctrlKTimeout = setTimeout(() => {
+          ctrlKPressed = false;
+        }, 2000);
+      } else if (ctrlKPressed && e.key === 'a') {
+        e.preventDefault();
+        setCurrentPage('Analytics');
+        ctrlKPressed = false;
+        clearTimeout(ctrlKTimeout);
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      clearTimeout(ctrlKTimeout);
+    };
   }, [selectedProject]);
 
   // Reduced motion support
@@ -176,7 +249,9 @@ export default function App() {
           ? '' 
           : 'p-4 md:p-6'
       }`}>
-        {currentPage === 'Case Study' ? (
+        {currentPage === 'Analytics' ? (
+          <AnalyticsDashboard />
+        ) : currentPage === 'Case Study' ? (
           <CaseStudyPage theme={theme} onBack={() => setCurrentPage('Dashboard')} />
         ) : currentPage === 'Projects' ? (
           <ProjectsPage theme={theme} onBack={() => setCurrentPage('Dashboard')} scrollToProjectId={scrollToProjectId} />
@@ -209,7 +284,7 @@ export default function App() {
                       // Create a temporary link to download the CV
                       const link = document.createElement('a');
                       link.href = cvFile;
-                      link.download = 'Zayd-Resume-Short.pdf';
+                      link.download = 'Zayd_Alnuweiri_CV.png';
                       document.body.appendChild(link);
                       link.click();
                       document.body.removeChild(link);

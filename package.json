@@ -5,6 +5,7 @@
       "private": true,
       "dependencies": {
           "@emailjs/browser": "*",
+          "@jsr/supabase__supabase-js": "^2.49.8",
           "@radix-ui/react-accordion": "^1.2.3",
           "@radix-ui/react-alert-dialog": "^1.1.6",
           "@radix-ui/react-aspect-ratio": "^1.1.2",
@@ -37,6 +38,7 @@
           "embla-carousel-react": "^8.6.0",
           "face-api.js": "*",
           "gsap": "*",
+          "hono": "*",
           "input-otp": "^1.4.2",
           "lenis": "*",
           "lucide-react": "^0.487.0",
