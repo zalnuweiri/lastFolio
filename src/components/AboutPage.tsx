@@ -19,11 +19,17 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
   const [expandedExperience, setExpandedExperience] = React.useState<number[]>([]);
   const [showVideoDialog, setShowVideoDialog] = React.useState(false);
   const [showVideoPlayer, setShowVideoPlayer] = React.useState(false);
+  const [showZeuronVideo, setShowZeuronVideo] = React.useState(false);
+  const [showZeuronJuniorVideo, setShowZeuronJuniorVideo] = React.useState(false);
   const videoRef = React.useRef<HTMLVideoElement>(null);
+  const zeuronVideoRef = React.useRef<HTMLVideoElement>(null);
+  const zeuronJuniorVideoRef = React.useRef<HTMLVideoElement>(null);
   // NEW FEATURE 1: State for tracking which video is currently selected (Admin or Student view)
   const [selectedVideoView, setSelectedVideoView] = React.useState<'admin' | 'student'>('admin');
   // NEW FEATURE 3: State for tracking video playback speed
   const [playbackSpeed, setPlaybackSpeed] = React.useState<number>(1);
+  const [zeuronPlaybackSpeed, setZeuronPlaybackSpeed] = React.useState<number>(1);
+  const [zeuronJuniorPlaybackSpeed, setZeuronJuniorPlaybackSpeed] = React.useState<number>(1);
 
   const homeStats = [
     { value: '5+', label: 'Years Production Software' },
@@ -458,9 +464,9 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
                         className="group inline-block relative text-[#4d9eff] transition-colors duration-300 hover:text-black cursor-pointer"
                         style={{ fontFamily: "'Righteous', sans-serif" }}
                     >
-                    <span className="absolute inset-0 bg-[#ff0080] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 -z-10 rounded-md" />
-                    Zayd Alnuweiri
-                  </span>
+                      <span className="absolute inset-0 bg-[#ff0080] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 -z-10 rounded-md" />
+                      Zayd Alnuweiri
+                    </span>
                   </h1>
 
                   <p className={`text-lg md:text-xl mb-8 max-w-xl leading-relaxed ${
@@ -609,35 +615,35 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
               >
-              <span className="relative inline-block group-hover:tracking-wider">
-                {"Professional Overview".split('').map((char, index) => {
-                  const isSpace = char === ' ';
-                  // Calculate character index excluding the space
-                  let charIndex = index;
-                  if (index > 12) charIndex = index - 1; // Subtract 1 for space after "Professional"
+                <span className="relative inline-block group-hover:tracking-wider">
+                  {"Professional Overview".split('').map((char, index) => {
+                    const isSpace = char === ' ';
+                    // Calculate character index excluding the space
+                    let charIndex = index;
+                    if (index > 12) charIndex = index - 1; // Subtract 1 for space after "Professional"
 
-                  const shouldTurnRed = !isSpace && charIndex < 21;
-                  const delay = shouldTurnRed ? charIndex * 80 : 0;
+                    const shouldTurnRed = !isSpace && charIndex < 21;
+                    const delay = shouldTurnRed ? charIndex * 80 : 0;
 
-                  // Insert line break after "Professional"
-                  if (index === 12) {
-                    return <br key={index} />;
-                  }
+                    // Insert line break after "Professional"
+                    if (index === 12) {
+                      return <br key={index} />;
+                    }
 
-                  return (
-                      <span
-                          key={index}
-                          className={`inline-block text-[#4d9eff] ${shouldTurnRed ? 'group-hover:text-[#ff0080]' : ''}`}
-                          style={{
-                            transition: 'color 0.3s ease',
-                            transitionDelay: `${delay}ms`
-                          }}
-                      >
-                      {char === ' ' ? '\u00A0' : char}
-                    </span>
-                  );
-                })}
-              </span>
+                    return (
+                        <span
+                            key={index}
+                            className={`inline-block text-[#4d9eff] ${shouldTurnRed ? 'group-hover:text-[#ff0080]' : ''}`}
+                            style={{
+                              transition: 'color 0.3s ease',
+                              transitionDelay: `${delay}ms`
+                            }}
+                        >
+                        {char === ' ' ? '\u00A0' : char}
+                      </span>
+                    );
+                  })}
+                </span>
               </motion.h2>
 
               <motion.a
@@ -795,8 +801,8 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
                           key={tech}
                           className="px-2 py-1 bg-white/5 border border-white/10 rounded text-xs text-gray-300"
                       >
-                    {tech}
-                  </span>
+                      {tech}
+                    </span>
                   ))}
                 </div>
               </motion.div>
@@ -819,8 +825,8 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
                           key={tech}
                           className="px-2 py-1 bg-white/5 border border-white/10 rounded text-xs text-gray-300"
                       >
-                    {tech}
-                  </span>
+                      {tech}
+                    </span>
                   ))}
                 </div>
               </motion.div>
@@ -843,8 +849,8 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
                           key={tech}
                           className="px-2 py-1 bg-white/5 border border-white/10 rounded text-xs text-gray-300"
                       >
-                    {tech}
-                  </span>
+                      {tech}
+                    </span>
                   ))}
                 </div>
               </motion.div>
@@ -1002,8 +1008,8 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
                           key={interest}
                           className="px-3 py-1.5 text-sm rounded-full border border-white/20 bg-white/5"
                       >
-                    {interest}
-                  </span>
+                      {interest}
+                    </span>
                   ))}
                 </div>
               </motion.div>
@@ -1028,30 +1034,30 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
               >
-              <span className="relative inline-block group-hover:tracking-wider">
-                {"Technical Skills".split('').map((char, index) => {
-                  const isSpace = char === ' ';
-                  // Calculate character index excluding the space
-                  let charIndex = index;
-                  if (index > 9) charIndex = index - 1; // Subtract 1 for space after "Technical"
+                <span className="relative inline-block group-hover:tracking-wider">
+                  {"Technical Skills".split('').map((char, index) => {
+                    const isSpace = char === ' ';
+                    // Calculate character index excluding the space
+                    let charIndex = index;
+                    if (index > 9) charIndex = index - 1; // Subtract 1 for space after "Technical"
 
-                  const shouldTurnRed = !isSpace && charIndex < 15;
-                  const delay = shouldTurnRed ? charIndex * 80 : 0;
+                    const shouldTurnRed = !isSpace && charIndex < 15;
+                    const delay = shouldTurnRed ? charIndex * 80 : 0;
 
-                  return (
-                      <span
-                          key={index}
-                          className={`inline-block text-[#4d9eff] ${shouldTurnRed ? 'group-hover:text-[#ff0080]' : ''}`}
-                          style={{
-                            transition: 'color 0.3s ease',
-                            transitionDelay: `${delay}ms`
-                          }}
-                      >
-                      {char === ' ' ? '\u00A0' : char}
-                    </span>
-                  );
-                })}
-              </span>
+                    return (
+                        <span
+                            key={index}
+                            className={`inline-block text-[#4d9eff] ${shouldTurnRed ? 'group-hover:text-[#ff0080]' : ''}`}
+                            style={{
+                              transition: 'color 0.3s ease',
+                              transitionDelay: `${delay}ms`
+                            }}
+                        >
+                        {char === ' ' ? '\u00A0' : char}
+                      </span>
+                    );
+                  })}
+                </span>
               </motion.h2>
 
               {/* Search Bar */}
@@ -1140,8 +1146,8 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
                         {/* Show More/Less Indicator */}
                         {data.skills.length > 4 && !isExpanded && (
                             <span className="px-3 py-1.5 bg-[#4d9eff]/10 border border-[#4d9eff]/30 rounded-full text-xs text-[#4d9eff]">
-                        +{data.skills.length - 4} more
-                      </span>
+                          +{data.skills.length - 4} more
+                        </span>
                         )}
                       </div>
                     </motion.div>
@@ -1212,33 +1218,33 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
             >
-            <span className="relative inline-block group-hover:tracking-wider">
-              {"What I'm Listening to Nowadays".split('').map((char, index) => {
-                const isSpace = char === ' ';
-                // Calculate character index excluding spaces
-                let charIndex = index;
-                if (index > 4) charIndex -= 1; // space after "What"
-                if (index > 7) charIndex -= 1; // space after "I'm"
-                if (index > 17) charIndex -= 1; // space after "Listening"
-                if (index > 19) charIndex -= 1; // space after "to"
+              <span className="relative inline-block group-hover:tracking-wider">
+                {"What I'm Listening to Nowadays".split('').map((char, index) => {
+                  const isSpace = char === ' ';
+                  // Calculate character index excluding spaces
+                  let charIndex = index;
+                  if (index > 4) charIndex -= 1; // space after "What"
+                  if (index > 7) charIndex -= 1; // space after "I'm"
+                  if (index > 17) charIndex -= 1; // space after "Listening"
+                  if (index > 19) charIndex -= 1; // space after "to"
 
-                const shouldTurnRed = !isSpace && charIndex < 26;
-                const delay = shouldTurnRed ? charIndex * 80 : 0;
+                  const shouldTurnRed = !isSpace && charIndex < 26;
+                  const delay = shouldTurnRed ? charIndex * 80 : 0;
 
-                return (
-                    <span
-                        key={index}
-                        className={`inline-block text-[#4d9eff] ${shouldTurnRed ? 'group-hover:text-[#ff0080]' : ''}`}
-                        style={{
-                          transition: 'color 0.3s ease',
-                          transitionDelay: `${delay}ms`
-                        }}
-                    >
-                    {char === ' ' ? '\u00A0' : char}
-                  </span>
-                );
-              })}
-            </span>
+                  return (
+                      <span
+                          key={index}
+                          className={`inline-block text-[#4d9eff] ${shouldTurnRed ? 'group-hover:text-[#ff0080]' : ''}`}
+                          style={{
+                            transition: 'color 0.3s ease',
+                            transitionDelay: `${delay}ms`
+                          }}
+                      >
+                      {char === ' ' ? '\u00A0' : char}
+                    </span>
+                  );
+                })}
+              </span>
             </motion.h2>
 
             <motion.div
@@ -1281,30 +1287,30 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                 >
-                <span className="relative inline-block group-hover:tracking-wider">
-                  {"Work Experience".split('').map((char, index) => {
-                    const isSpace = char === ' ';
-                    // Calculate character index excluding the space
-                    let charIndex = index;
-                    if (index > 4) charIndex = index - 1; // Subtract 1 for space after "Work"
+                  <span className="relative inline-block group-hover:tracking-wider">
+                    {"Work Experience".split('').map((char, index) => {
+                      const isSpace = char === ' ';
+                      // Calculate character index excluding the space
+                      let charIndex = index;
+                      if (index > 4) charIndex = index - 1; // Subtract 1 for space after "Work"
 
-                    const shouldTurnRed = !isSpace && charIndex < 14;
-                    const delay = shouldTurnRed ? charIndex * 80 : 0;
+                      const shouldTurnRed = !isSpace && charIndex < 14;
+                      const delay = shouldTurnRed ? charIndex * 80 : 0;
 
-                    return (
-                        <span
-                            key={index}
-                            className={`inline-block text-[#4d9eff] ${shouldTurnRed ? 'group-hover:text-[#ff0080]' : ''}`}
-                            style={{
-                              transition: 'color 0.3s ease',
-                              transitionDelay: `${delay}ms`
-                            }}
-                        >
-                        {char === ' ' ? '\u00A0' : char}
-                      </span>
-                    );
-                  })}
-                </span>
+                      return (
+                          <span
+                              key={index}
+                              className={`inline-block text-[#4d9eff] ${shouldTurnRed ? 'group-hover:text-[#ff0080]' : ''}`}
+                              style={{
+                                transition: 'color 0.3s ease',
+                                transitionDelay: `${delay}ms`
+                              }}
+                          >
+                          {char === ' ' ? '\u00A0' : char}
+                        </span>
+                      );
+                    })}
+                  </span>
                 </motion.h2>
                 <p className="hidden md:block text-sm text-gray-500">Click cards for full details</p>
               </div>
@@ -1349,10 +1355,15 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
                                           e.preventDefault();
                                           setShowVideoPlayer(true);
                                         }
-                                        // Show NDA dialog for other Video Demo links
-                                        else if (index === 2 || index === 5) {
+                                        // Show Zeuron Development Director video player - index 2
+                                        else if (index === 2) {
                                           e.preventDefault();
-                                          setShowVideoDialog(true);
+                                          setShowZeuronVideo(true);
+                                        }
+                                        // Show Zeuron Junior Developer video player - index 5
+                                        else if (index === 5) {
+                                          e.preventDefault();
+                                          setShowZeuronJuniorVideo(true);
                                         }
                                       }}
                                   >
@@ -1368,8 +1379,8 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
                             {/* Disclaimer pill for Currus AI (index 1) */}
                             {index === 1 && (
                                 <span className="px-2 py-0.5 md:px-2.5 md:py-0.5 bg-red-500/20 border border-red-500/50 text-red-400 rounded-full text-[8px] md:text-[10px] whitespace-normal md:whitespace-nowrap max-w-[200px] md:max-w-none text-center">
-                            NOTE: Client updating site post-delivery, functionality may be impacted
-                          </span>
+                              NOTE: Client updating site post-delivery, functionality may be impacted
+                            </span>
                             )}
                           </div>
                         </div>
@@ -1386,8 +1397,8 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
                                   key={highlight}
                                   className="px-3 py-1 bg-white/5 border border-white/10 rounded text-xs text-gray-300"
                               >
-                          • {highlight}
-                        </span>
+                            • {highlight}
+                          </span>
                           ))}
                         </div>
 
@@ -1650,6 +1661,200 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
                   <p className="mt-2 text-[#4d9eff]">
                     Currently viewing: <span className="font-semibold">{selectedVideoView === 'admin' ? 'Admin View' : 'Student View'}</span>
                   </p>
+                </div>
+              </motion.div>
+            </div>
+        )}
+
+        {/* Zeuron Video Player Modal */}
+        {showZeuronVideo && (
+            <div
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+                onClick={() => {
+                  setShowZeuronVideo(false);
+                  if (zeuronVideoRef.current) {
+                    zeuronVideoRef.current.pause();
+                    zeuronVideoRef.current.currentTime = 0;
+                  }
+                }}
+            >
+              <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  className="bg-[#111111] border border-white/10 rounded-2xl p-6 max-w-4xl w-full mx-4 shadow-2xl"
+                  onClick={(e) => e.stopPropagation()}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-xl font-semibold text-white">Development Director and Team Co-Lead - Project Demo</h3>
+                  <button
+                      onClick={() => {
+                        setShowZeuronVideo(false);
+                        if (zeuronVideoRef.current) {
+                          zeuronVideoRef.current.pause();
+                          zeuronVideoRef.current.currentTime = 0;
+                        }
+                      }}
+                      className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Video player */}
+                <div className="relative bg-black rounded-lg overflow-hidden">
+                  <video
+                      ref={zeuronVideoRef}
+                      className="w-full h-auto"
+                      controls
+                      autoPlay
+                      onLoadedMetadata={() => {
+                        if (zeuronVideoRef.current) {
+                          zeuronVideoRef.current.playbackRate = zeuronPlaybackSpeed;
+                        }
+                      }}
+                      onCanPlay={() => {
+                        if (zeuronVideoRef.current) {
+                          zeuronVideoRef.current.playbackRate = zeuronPlaybackSpeed;
+                        }
+                      }}
+                  >
+                    <source
+                        src="/PBCItest.mov"
+                        type="video/mp4"
+                    />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+
+                {/* Playback Speed Controls */}
+                <div className="mt-4 flex items-center gap-3">
+                  <span className="text-sm text-gray-400">Playback Speed:</span>
+                  <div className="flex gap-2">
+                    {[1, 1.5, 2].map((speed) => (
+                        <button
+                            key={speed}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setZeuronPlaybackSpeed(speed);
+                              if (zeuronVideoRef.current) {
+                                zeuronVideoRef.current.playbackRate = speed;
+                              }
+                            }}
+                            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                                zeuronPlaybackSpeed === speed
+                                    ? 'bg-[#4d9eff] text-white shadow-lg shadow-[#4d9eff]/20'
+                                    : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
+                            }`}
+                        >
+                          {speed}x
+                        </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-4 text-sm text-gray-400">
+                  <p>Zeuron - January 2025 to April 2025</p>
+                  <p className="mt-2">Open-source BCI game development project with Python/Unity</p>
+                </div>
+              </motion.div>
+            </div>
+        )}
+
+        {/* Zeuron Junior Developer Video Player Modal */}
+        {showZeuronJuniorVideo && (
+            <div
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
+                onClick={() => {
+                  setShowZeuronJuniorVideo(false);
+                  if (zeuronJuniorVideoRef.current) {
+                    zeuronJuniorVideoRef.current.pause();
+                    zeuronJuniorVideoRef.current.currentTime = 0;
+                  }
+                }}
+            >
+              <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  className="bg-[#111111] border border-white/10 rounded-2xl p-6 max-w-4xl w-full mx-4 shadow-2xl"
+                  onClick={(e) => e.stopPropagation()}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-xl font-semibold text-white">Junior Game Developer and Test Engineer - Project Demo</h3>
+                  <button
+                      onClick={() => {
+                        setShowZeuronJuniorVideo(false);
+                        if (zeuronJuniorVideoRef.current) {
+                          zeuronJuniorVideoRef.current.pause();
+                          zeuronJuniorVideoRef.current.currentTime = 0;
+                        }
+                      }}
+                      className="text-gray-400 hover:text-white transition-colors"
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+
+                {/* Video player */}
+                <div className="relative bg-black rounded-lg overflow-hidden">
+                  <video
+                      ref={zeuronJuniorVideoRef}
+                      className="w-full h-auto"
+                      controls
+                      autoPlay
+                      onLoadedMetadata={() => {
+                        if (zeuronJuniorVideoRef.current) {
+                          zeuronJuniorVideoRef.current.playbackRate = zeuronJuniorPlaybackSpeed;
+                        }
+                      }}
+                      onCanPlay={() => {
+                        if (zeuronJuniorVideoRef.current) {
+                          zeuronJuniorVideoRef.current.playbackRate = zeuronJuniorPlaybackSpeed;
+                        }
+                      }}
+                  >
+                    <source
+                        src="/GambitDemo.mp4"
+                        type="video/mp4"
+                    />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+
+                {/* Playback Speed Controls */}
+                <div className="mt-4 flex items-center gap-3">
+                  <span className="text-sm text-gray-400">Playback Speed:</span>
+                  <div className="flex gap-2">
+                    {[1, 1.5, 2].map((speed) => (
+                        <button
+                            key={speed}
+                            onClick={(e) => {
+                              e.preventDefault();
+                              setZeuronJuniorPlaybackSpeed(speed);
+                              if (zeuronJuniorVideoRef.current) {
+                                zeuronJuniorVideoRef.current.playbackRate = speed;
+                              }
+                            }}
+                            className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all ${
+                                zeuronJuniorPlaybackSpeed === speed
+                                    ? 'bg-[#4d9eff] text-white shadow-lg shadow-[#4d9eff]/20'
+                                    : 'bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white'
+                            }`}
+                        >
+                          {speed}x
+                        </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="mt-4 text-sm text-gray-400">
+                  <p>Zeuron - January 2024 to April 2024</p>
+                  <p className="mt-2">3D Unity game (C#) for Brain Computer Interface testing. NOTE: Flashing is intentional and prompts player movement when looked at by BCI-wearer.</p>
                 </div>
               </motion.div>
             </div>
