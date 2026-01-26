@@ -283,8 +283,8 @@ export default function App() {
                     onViewCVClick={() => {
                       // Create a temporary link to download the CV
                       const link = document.createElement('a');
-                      link.href = cvFile;
-                      link.download = 'Zayd_Alnuweiri_CV.png';
+                      link.href = '/Zayd-Resume-Short.pdf';
+                      link.download = 'Zayd-Resume-Short.pdf';
                       document.body.appendChild(link);
                       link.click();
                       document.body.removeChild(link);

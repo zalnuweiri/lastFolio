@@ -635,8 +635,8 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
             </motion.h2>
             
             <motion.a
-              href={cvFile}
-              download="Zayd_Alnuweiri_CV.png"
+              href='/Zayd-Resume-Short.pdf'
+              download="Zayd-Resume-Short.pdf"
               className="flex items-center gap-1.5 px-3 py-1.5 md:px-6 md:py-3 text-xs md:text-base bg-[#4d9eff] text-white rounded-lg hover:bg-[#3d8eef] transition-colors whitespace-nowrap"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
