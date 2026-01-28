@@ -196,7 +196,7 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
       ]
     },
     {
-      title: 'Lead Intern for Recruitment',
+      title: 'Lead Administrative Assistant',
       company: 'LMIFG (iA Financial Group)',
       location: 'Remote, Canada',
       period: 'June 2023 - January 2024',
@@ -209,7 +209,9 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
       fullDetails: [
         'Administered the recruitment process for new interns, including initial communication, appointments, employment quizzes and tracking progress through the multi-step hiring process.',
         'Built a SQL database (DB) to simplify the administrative tasks, utilizing mySQL to create simple, practical queries that enabled for easy contacting of applicants throughout the various phases of the hiring process.',
-        'Supported the sales team administratively when required with client outreach and acquisition.'
+        'Supported the sales team administratively when required with client outreach and acquisition.',
+          'Cleaned and controlled all Google Sheets pages. Entered and organized data. Repaired sheets for Mr. Wolf when something broke.',
+          'Reached out to unresponsive clients and/or applicants and governed the employee intake system.'
       ]
     },
     {
