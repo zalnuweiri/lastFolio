@@ -110,7 +110,7 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
       ]
     },
     {
-      title: 'Development Director and Team Co-Lead',
+      title: 'Technical Director and Team Co-Lead',
       company: 'Zeuron',
       location: 'Halifax, Canada',
       period: 'January 2025 - April 2025',
