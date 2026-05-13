@@ -113,7 +113,7 @@ export function ProjectModal({ project, onClose, theme, onViewFullProject }: Pro
       };
     }
     
-    if (project.id === 2) { // Currus AI (MetaCiti website and Dashboard)
+    if (project.id === 2) { // Ottonomi AI (MetaCiti website and Dashboard)
       return {
         description: "Supporting a live AI-driven detection platform while improving reliability of alert workflows, maintaining NDA constraints, and modernizing legacy frontend code without disrupting production systems.",
         role: "Junior Full-Stack Developer",
@@ -130,7 +130,7 @@ export function ProjectModal({ project, onClose, theme, onViewFullProject }: Pro
       };
     }
     
-    if (project.id === 3) { // Currus AI (MetaCiti website and Dashboard)
+    if (project.id === 3) { // Ottonomi AI (MetaCiti website and Dashboard)
       return {
         description: "Supporting a live AI-driven detection platform while improving reliability of alert workflows, maintaining NDA constraints, and modernizing legacy frontend code without disrupting production systems.",
         role: "Junior Full-Stack Developer",

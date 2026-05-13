@@ -111,7 +111,7 @@ export function ProjectsPage({ theme, onBack, scrollToProjectId }: ProjectsPageP
       id: 2,
       title: "MetaCiti Website",
       subtitle: "Modular React Website Redesign",
-      description: "Redesigned and built modular React website for Currus AI metaciti division. Created a modern, accessible React architecture from an approved Figma prototype, ensuring cross-browser compatibility and responsive design.",
+      description: "Redesigned and built modular React website for Ottonomi AI metaciti division. Created a modern, accessible React architecture from an approved Figma prototype, ensuring cross-browser compatibility and responsive design.",
       image: metaCitiImage,
       video: metaCitiImage,
       metrics: [
@@ -121,7 +121,7 @@ export function ProjectsPage({ theme, onBack, scrollToProjectId }: ProjectsPageP
       ],
       tags: ["React", "TypeScript", "Figma", "Responsive Design", "Accessibility"],
       year: "2023",
-      client: "Currus AI",
+      client: "Ottonomi AI",
       role: "Junior Developer"
     },
     {
@@ -138,7 +138,7 @@ export function ProjectsPage({ theme, onBack, scrollToProjectId }: ProjectsPageP
       ],
       tags: ["React", "TypeScript", "UI/UX", "Backend Integration", "Git"],
       year: "2024",
-      client: "Currus AI",
+      client: "Ottonomi AI",
       role: "Junior Developer (Fullstack)",
       link: "#"
     },

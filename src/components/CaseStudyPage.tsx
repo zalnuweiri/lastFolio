@@ -57,7 +57,7 @@ export function CaseStudyPage({ theme, onBack }: CaseStudyPageProps) {
       id: 2,
       title: "MetaCiti Website",
       subtitle: "Modular React Website Redesign",
-      description: "Redesigned and built modular React website for Currus AI metaciti division. Created a modern, accessible React architecture from an approved Figma prototype, ensuring cross-browser compatibility and responsive design.",
+      description: "Redesigned and built modular React website for Ottonomi AI metaciti division. Created a modern, accessible React architecture from an approved Figma prototype, ensuring cross-browser compatibility and responsive design.",
       image: metaCitiImage,
       metrics: [
         { label: "Platform", value: "React" },
@@ -67,7 +67,7 @@ export function CaseStudyPage({ theme, onBack }: CaseStudyPageProps) {
       ],
       tags: ["React", "TypeScript", "Figma", "Responsive Design", "Accessibility"],
       year: "2023",
-      client: "Currus AI",
+      client: "Ottonomi AI",
       role: "Junior Developer",
       link: "#"
     },
@@ -85,7 +85,7 @@ export function CaseStudyPage({ theme, onBack }: CaseStudyPageProps) {
       ],
       tags: ["React", "TypeScript", "UI/UX", "Backend Integration", "Git"],
       year: "2024",
-      client: "Currus AI",
+      client: "Ottonomi AI",
       role: "Junior Developer (Fullstack)",
       link: "#"
     },

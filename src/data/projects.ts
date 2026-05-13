@@ -30,7 +30,7 @@ export const projects: Project[] = [
     image: metaCitiImage, 
     title: 'MetaCiti website', 
     category: 'Development', 
-    description: 'Redesigned and built modular React website for Currus AI metaciti division',
+    description: 'Redesigned and built modular React website for Ottonomi AI metaciti division',
     year: '2025'
   },
   { 

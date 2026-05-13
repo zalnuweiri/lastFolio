@@ -60,7 +60,7 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
   ];
 
   const currently = {
-    working: 'AI Dashboard & Product Site for Currus AI/MetaCiti',
+    working: 'AI Dashboard & Product Site for Ottonomi AI/MetaCiti',
     learning: 'WebGL, Three.js, and advanced animation techniques',
     exploring: 'AI/ML integration in web applications',
     openTo: 'Full-time roles, contract work, and exciting collaborations'
@@ -92,7 +92,7 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
     },
     {
       title: 'Junior Developer (Fullstack)',
-      company: 'Currus AI',
+      company: 'Ottonomi AI',
       location: 'Toronto, Canada',
       period: 'June 2025 - Current',
       description: 'Contributed to an AI-powered detection platform (under NDA), enhancing alert workflows, timeout logic, and UI functionality.',
@@ -1378,7 +1378,7 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
                                   </a>
                               )}
                             </div>
-                            {/* Disclaimer pill for Currus AI (index 1) */}
+                            {/* Disclaimer pill for Ottonomi AI (index 1) */}
                             {index === 1 && (
                                 <span className="px-2 py-0.5 md:px-2.5 md:py-0.5 bg-red-500/20 border border-red-500/50 text-red-400 rounded-full text-[8px] md:text-[10px] whitespace-normal md:whitespace-nowrap max-w-[200px] md:max-w-none text-center">
                               NOTE: Client updating site post-delivery, functionality may be impacted
