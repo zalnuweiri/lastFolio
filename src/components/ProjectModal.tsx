@@ -41,7 +41,7 @@ export function ProjectModal({ project, onClose, theme, onViewFullProject }: Pro
         'Implemented animated moving-gradient visuals while preserving layout stability and cross-device responsiveness.',
       ];
     }
-    if (project.id === 1) {
+    if (project.id === 2) {
       return [
         'Delivered a rapid Agile build converting a detailed Figma design into a pixel-accurate, responsive React site with continuous client feedback.',
         'Implemented full-stack features using React, EmailJS, and PostgreSQL, including API-based form submissions and mailing-list integration.',
@@ -112,7 +112,7 @@ export function ProjectModal({ project, onClose, theme, onViewFullProject }: Pro
   
   // Define project-specific content
   const getProjectContent = () => {
-    if (project.id === 1) { // Silent H Bar & Restaurant
+    if (project.id === 2) { // Silent H Bar & Restaurant
       return {
         description: "Delivered a production restaurant website from approved Figma designs under rapid Agile timelines, followed by iterative post-launch updates across multiple contract re-engagements.",
         role: "Independent Web Development Contractor (Full Stack)",
@@ -127,23 +127,6 @@ export function ProjectModal({ project, onClose, theme, onViewFullProject }: Pro
           "Cloudflare deployment completed with DNS and routing reconfiguration",
           "Post-launch feature updates delivered under separate re-engagements (e.g., NYE event content)",
           "Ongoing responsibility assumed for Klaviyo newsletter infrastructure across Silent H and sister brand Coterie"
-        ]
-      };
-    }
-    
-    if (project.id === 2) { // Ottonomi AI (MetaCiti website and Dashboard)
-      return {
-        description: "Supporting a live AI-driven detection platform while improving reliability of alert workflows, maintaining NDA constraints, and modernizing legacy frontend code without disrupting production systems.",
-        role: "Junior Full-Stack Developer",
-        timeline: "June 2025 – Present",
-        technologies: ['React', 'TypeScript', 'Linux', 'Git / GitLab', 'REST APIs'],
-        achievement: "Improved reliability of production alert workflows through timeout and re-notification logic\nSupported onboarding and repository standardization across active development teams\nDelivered a modernized, accessible public-facing website from approved Figma designs",
-        challenge: "Supporting a live AI-driven detection platform while improving reliability of alert workflows, maintaining NDA constraints, and modernizing legacy frontend code without disrupting production systems.",
-        solution: "Analyzed and tested alert timeout behavior using Linux-based debugging, implemented UI updates in response to senior developer feedback, documented repository structure and workflows, and rebuilt the public-facing website into a cleaner, more maintainable React architecture based on approved Figma prototypes.",
-        results: [
-          "More reliable alert re-notification when acknowledgements were missed",
-          "Cleaner repository structure and improved onboarding documentation",
-          "Modern, accessible public website aligned with current web standards"
         ]
       };
     }
@@ -165,7 +148,24 @@ export function ProjectModal({ project, onClose, theme, onViewFullProject }: Pro
       };
     }
     
-    if (project.id === 4) { // Zeuron (BCI Calibration Game)
+    if (project.id === 4) { // Ottonomi AI (MetaCiti website and Dashboard)
+      return {
+        description: "Supporting a live AI-driven detection platform while improving reliability of alert workflows, maintaining NDA constraints, and modernizing legacy frontend code without disrupting production systems.",
+        role: "Junior Full-Stack Developer",
+        timeline: "June 2025 – Present",
+        technologies: ['React', 'TypeScript', 'Linux', 'Git / GitLab', 'REST APIs'],
+        achievement: "Improved reliability of production alert workflows through timeout and re-notification logic\nSupported onboarding and repository standardization across active development teams\nDelivered a modernized, accessible public-facing website from approved Figma designs",
+        challenge: "Supporting a live AI-driven detection platform while improving reliability of alert workflows, maintaining NDA constraints, and modernizing legacy frontend code without disrupting production systems.",
+        solution: "Analyzed and tested alert timeout behavior using Linux-based debugging, implemented UI updates in response to senior developer feedback, documented repository structure and workflows, and rebuilt the public-facing website into a cleaner, more maintainable React architecture based on approved Figma prototypes.",
+        results: [
+          "More reliable alert re-notification when acknowledgements were missed",
+          "Cleaner repository structure and improved onboarding documentation",
+          "Modern, accessible public website aligned with current web standards"
+        ]
+      };
+    }
+    
+    if (project.id === 5) { // Zeuron (BCI Calibration Game)
       return {
         description: "Leading delivery of a multi-level BCI calibration game for head-mounted eye-tracking hardware, while coordinating a mixed-experience team, maintaining development velocity, and adapting workflows mid-project due to tooling outages.",
         role: "Development Director & Team Co-Lead",
@@ -182,7 +182,7 @@ export function ProjectModal({ project, onClose, theme, onViewFullProject }: Pro
       };
     }
     
-    if (project.id === 5) { // Peer Review System for Academia
+    if (project.id === 6) { // Peer Review System for Academia
       return {
         description: "Stabilizing and rebuilding a dysfunctional PHP-based peer review system for real academic use, while supporting a junior-heavy team, managing version control risks, and coordinating delivery within a simulated client-facing environment.",
         role: "Senior Developer (Full Stack)",
@@ -199,7 +199,7 @@ export function ProjectModal({ project, onClose, theme, onViewFullProject }: Pro
       };
     }
     
-    if (project.id === 6) { // BCI-Compatible 3D Platformer Game
+    if (project.id === 7) { // BCI-Compatible 3D Platformer Game
       return {
         description: "Developing and testing a Unity-based 3D platformer designed for BCI testing, where gameplay mechanics directly affected the accuracy and reliability of eye-tracking calibration data.",
         role: "Junior Game Developer & Test Engineer",
@@ -220,16 +220,19 @@ export function ProjectModal({ project, onClose, theme, onViewFullProject }: Pro
     
     // Default content for other projects
     return {
-      description: "This project showcases innovative design and development techniques, combining user-centric design with cutting-edge technology to create an exceptional digital experience.",
-      role: "Lead Designer & Developer",
-      timeline: "3 months",
-      technologies: ['React', 'TypeScript', 'Tailwind', 'GSAP'],
-      achievement: "Featured on Awwards",
-      challenge: "The main challenge was creating an interface that was both visually stunning and highly functional, while maintaining optimal performance across all devices.",
-      solution: "We implemented a component-based architecture with advanced animations and micro-interactions, ensuring a smooth and engaging user experience throughout.",
-      results: null // Will show default metrics
+      description: "This project is currently under construction. Full details will be added soon.",
+      role: "Under construction",
+      timeline: "Details coming soon",
+      technologies: ['Coming soon'],
+      achievement: "Details coming soon",
+      challenge: "This section is currently being updated.",
+      solution: "This section is currently being updated.",
+      results: [
+        "Project details are currently being finalized."
+      ]
     };
   };
+
 
   const content = getProjectContent();
   const fullDetails = getFullDetails();
@@ -301,7 +304,7 @@ export function ProjectModal({ project, onClose, theme, onViewFullProject }: Pro
                 <Github className="w-4 h-4" />
                 Source Code
               </button>
-              {project.id === 2 && (
+              {project.id === 3 && (
                 <div className="ml-auto flex items-center">
                   <span className="px-3 py-1 bg-red-500/20 border border-red-500/50 text-red-400 rounded-full text-xs whitespace-nowrap">
                     NOTE: Client updating site post-delivery, functionality may be impacted
