@@ -91,12 +91,93 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
       ]
     },
     {
+      title: 'Data Scientist',
+      company: 'Coterie Brands',
+      location: 'Toronto, Canada',
+      period: 'April 10 2026 - April 24 2026',
+      description: 'Built a MySQL database from large Excel datasets, cleaned import-ready data, and created SQL views to support monthly client follow-ups.',
+      highlights: [
+        'Built database from multiple large Excel files',
+        'Cleaned data for MySQL Workbench import',
+        'Created SQL views for monthly client follow-ups',
+        'Flagged customers enrolled in conflicting benefits programs'
+      ],
+      fullDetails: [
+        'Worked with the Operations Manager to build a database using multiple large Excel files.',
+        'Cleaned and standardized data to prepare it for import into MySQL Workbench.',
+        'Queried new databases to extract meaningful, actionable data, including flagging customers enrolled in multiple benefits programs where only one enrollment was permitted.',
+        'Set up SQL views for the client to use in monthly follow-ups for new enrollees.',
+        'Set up the MySQL Workbench environment for local client use.'
+      ]
+    },
+    {
+      title: 'Fullstack Web Developer',
+      company: 'NOTLIMITED Marketing Agency',
+      location: 'Toronto, Canada',
+      period: 'March 24 2026 - March 27 2026',
+      description: 'Built and deployed a responsive marketing agency website within a three-day turnaround as the sole developer.',
+      demoLink: 'https://notlimited.ca',
+      highlights: [
+        'Delivered responsive website in three days',
+        'Translated Figma prototype into polished web experience',
+        'Owned setup, development, QA, deployment, and handoff',
+        'Optimized responsive media assets for web performance'
+      ],
+      fullDetails: [
+        'Built and deployed a responsive marketing agency website within a three-day turnaround as the sole developer.',
+        'Translated a medium-fidelity Figma prototype into a polished, interactive website across desktop and mobile breakpoints.',
+        'Owned the full delivery lifecycle, including project setup, frontend implementation, asset optimization, QA, deployment, and handoff.',
+        'Coordinated with the asset team on responsive media requirements, including aspect ratios and FFMPEG compression for web performance.',
+        'Implemented animated moving-gradient visuals while preserving layout stability and cross-device responsiveness.'
+      ]
+    },
+    {
+      title: 'Fullstack Web Developer',
+      company: 'AITCH Speakeasy & Cocktail Bar',
+      location: 'Toronto, Canada',
+      period: 'March 10 2026 - March 17 2026',
+      description: 'Built and deployed a redesigned React website from a Figma prototype within a one-week development cycle.',
+      demoLink: 'https://www.silenth.ca/aitch/',
+      highlights: [
+        'Built redesigned React website from Figma prototype',
+        'Improved mobile UX with responsive layout recommendations',
+        'Migrated DNS routing to Cloudflare',
+        'Integrated TypeScript React components into JavaScript codebase'
+      ],
+      fullDetails: [
+        'Built and deployed a redesigned React website from a Figma prototype within a one-week development cycle.',
+        'Improved mobile UX by advising on responsive layout decisions, including carousel-based image presentation for smaller screens.',
+        'Migrated DNS routing to Cloudflare and supported the transition from the previous WP Engine-hosted site.',
+        'Integrated TypeScript React components into an existing JavaScript React codebase while maintaining visual consistency across the site.',
+        'Managed deployment, Git-based version control, and client handoff guidance for future codebase updates.'
+      ]
+    },
+    {
+      title: 'Software Developer (Fullstack)',
+      company: 'VeneKlasen',
+      location: 'NYC via Remote',
+      period: 'January 23 2026 - February 6 2026',
+      description: 'Developed a document conversion application to support bulk typeface migration for retained client files after a company split.',
+      highlights: [
+        'Built document conversion application in one sprint',
+        'Supported conversion of up to 30 files at a time',
+        'Implemented privacy-conscious no-cache file handling',
+        'Led development from concept through implementation'
+      ],
+      fullDetails: [
+        'Completed a one-sprint contract to develop a document conversion application after VeneKlasen split from Michael Werner, supporting the bulk migration of retained client files to new typefaces.',
+        'Deployed a product with support for conversion of up to 30 files at a time.',
+        'Implemented a privacy-conscious no-cache file-handling workflow, allowing users to convert and download documents without files being stored online or persisted server-side.',
+        'Led all stages of the SDLC from conceptualization through implementation and development.'
+      ]
+    },
+    {
       title: 'Junior Developer (Fullstack)',
       company: 'Ottonomi AI',
       location: 'Toronto, Canada',
       period: 'June 2025 - Current',
       description: 'Contributed to an AI-powered detection platform (under NDA), enhancing alert workflows, timeout logic, and UI functionality.',
-      demoLink: 'https://mciti.netlify.app/',
+      demoLink: 'https://metaciti.app',
       highlights: [
         'Performed Linux-based testing of alert acknowledgement systems',
         'Documented Git repositories and enforced repo structure standards',
@@ -1353,33 +1434,33 @@ export function AboutPage({ theme, onBack, onNavigate }: AboutPageProps) {
                                       onClick={(e) => {
                                         e.stopPropagation();
                                         // Show video player for Senior Developer (Full Stack) - index 3
-                                        if (index === 3) {
+                                        if (index === 7) {
                                           e.preventDefault();
                                           setShowVideoPlayer(true);
                                         }
                                         // Show Zeuron Development Director video player - index 2
-                                        else if (index === 2) {
+                                        else if (index === 6) {
                                           e.preventDefault();
                                           setShowZeuronVideo(true);
                                         }
                                         // Show Zeuron Junior Developer video player - index 5
-                                        else if (index === 5) {
+                                        else if (index === 9) {
                                           e.preventDefault();
                                           setShowZeuronJuniorVideo(true);
                                         }
                                       }}
                                   >
-                                    {index === 2 || index === 3 || index === 5 ? (
+                                    {index === 9 || index === 7 || index === 6 ? (
                                         <Play className="w-3 h-3" />
                                     ) : (
                                         <ExternalLink className="w-3 h-3" />
                                     )}
-                                    <span>{index === 2 || index === 3 || index === 5 ? 'Video Demo' : 'Live Demo'}</span>
+                                    <span>{index === 9 || index === 7 || index === 6 ? 'Video Demo' : 'Live Demo'}</span>
                                   </a>
                               )}
                             </div>
                             {/* Disclaimer pill for Ottonomi AI (index 1) */}
-                            {index === 1 && (
+                            {index === 5 && (
                                 <span className="px-2 py-0.5 md:px-2.5 md:py-0.5 bg-red-500/20 border border-red-500/50 text-red-400 rounded-full text-[8px] md:text-[10px] whitespace-normal md:whitespace-nowrap max-w-[200px] md:max-w-none text-center">
                               NOTE: Client updating site post-delivery, functionality may be impacted
                             </span>

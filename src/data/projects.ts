@@ -19,7 +19,7 @@ export interface Project {
 export const projects: Project[] = [
   { 
     id: 1, 
-    image: silentHImage, 
+    image: "../SH.webp",
     title: 'Silent H Bar & Restaurant', 
     category: 'Development', 
     description: 'Figma -> Live modular react website, freelance contract',
@@ -27,7 +27,7 @@ export const projects: Project[] = [
   },
   { 
     id: 2, 
-    image: metaCitiImage, 
+    image: "../OttoWeb.webp",
     title: 'MetaCiti website', 
     category: 'Development', 
     description: 'Redesigned and built modular React website for Ottonomi AI metaciti division',
@@ -35,7 +35,7 @@ export const projects: Project[] = [
   },
   { 
     id: 3, 
-    image: metaCitiDashboardImage, 
+    image: "../OttoAI.webp",
     title: 'MetaCiti App Dashboard/UI', 
     category: 'Development', 
     description: 'Worked on React Typescript Project, adding UI fixes, and connecting frontend additions to new backend functions',
@@ -43,7 +43,7 @@ export const projects: Project[] = [
   },
   { 
     id: 4, 
-    image: pythonBCIGameImage, 
+    image: "../piratebci.webp",
     title: 'Python-based BCI game', 
     category: 'Development', 
     description: 'Second contract with Zeuron, this time leading development of a Python BCI game. Delivered game except for one level, which was essentially a second game within the game that required completely different mechanics',
@@ -51,7 +51,7 @@ export const projects: Project[] = [
   },
   { 
     id: 5, 
-    image: php360Image, 
+    image: "../phpsite.webp",
     title: 'PHP 360 Review Tool', 
     category: 'Development', 
     description: 'Project for client at Dalhousie University. Website revived and brought to working, deployed & delivered state',
@@ -59,7 +59,7 @@ export const projects: Project[] = [
   },
   { 
     id: 6, 
-    image: brandIdentityImage, 
+    image: "../gbci.webp",
     modalImage: brandIdentityModalImage,
     title: 'Brain Computer Interface Game', 
     category: 'Development', 

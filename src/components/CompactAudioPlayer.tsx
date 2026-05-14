@@ -16,16 +16,16 @@ interface Particle {
 // Default songs that users can cycle through
 const DEFAULT_SONGS = [
   {
-    name: 'Track 1 - Electronic Dreams',
-    url: '/diamono.mp3', // Must start with / for public folder
+    name: 'Omar Pene - Banna',
+    url: '/Banna.mp3', // Must start with / for public folder
   },
   {
-    name: 'Track 2 - Ambient Waves',
-    url: '/saintcirc.mp3', // Must start with / for public folder
+    name: 'Asmahan - Farraq Ma Beini',
+    url: '/asmahan.mp3', // Must start with / for public folder
   },
   {
-    name: 'Track 3 - Synthwave Sunset',
-    url: '/diamono.mp3', // Must start with / for public folder
+    name: 'Grateful Dead - Tastebud',
+    url: '/Tastebud.mp3', // Must start with / for public folder
   }
 ];
 
