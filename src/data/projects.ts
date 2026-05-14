@@ -17,8 +17,24 @@ export interface Project {
 }
 
 export const projects: Project[] = [
+  {
+    id: 0,
+    image: "../AITCHss.webp",
+    title: 'AITCH Speakeasy',
+    category: 'Development',
+    description: 'WPEngine Redesign -> Deployed react website, freelance contract',
+    year: '2026'
+  },
+  {
+    id: 1,
+    image: "../nolimitss.webp",
+    title: 'NOTLIMITED Marketing Agency',
+    category: 'Development',
+    description: 'Mid-Fidelity Prototype to Live, Deployed Site in 3 day turnaround',
+    year: '2026'
+  },
   { 
-    id: 1, 
+    id: 2,
     image: "../SH.webp",
     title: 'Silent H Bar & Restaurant', 
     category: 'Development', 
@@ -26,7 +42,7 @@ export const projects: Project[] = [
     year: '2025'
   },
   { 
-    id: 2, 
+    id: 3,
     image: "../OttoWeb.webp",
     title: 'MetaCiti website', 
     category: 'Development', 
@@ -34,7 +50,7 @@ export const projects: Project[] = [
     year: '2025'
   },
   { 
-    id: 3, 
+    id: 4,
     image: "../OttoAI.webp",
     title: 'MetaCiti App Dashboard/UI', 
     category: 'Development', 
@@ -42,7 +58,7 @@ export const projects: Project[] = [
     year: '2025'
   },
   { 
-    id: 4, 
+    id: 5,
     image: "../piratebci.webp",
     title: 'Python-based BCI game', 
     category: 'Development', 
@@ -50,7 +66,7 @@ export const projects: Project[] = [
     year: '2025'
   },
   { 
-    id: 5, 
+    id: 6,
     image: "../phpsite.webp",
     title: 'PHP 360 Review Tool', 
     category: 'Development', 
@@ -58,7 +74,7 @@ export const projects: Project[] = [
     year: '2024'
   },
   { 
-    id: 6, 
+    id: 7,
     image: "../gbci.webp",
     modalImage: brandIdentityModalImage,
     title: 'Brain Computer Interface Game', 
