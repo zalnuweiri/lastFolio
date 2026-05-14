@@ -23,6 +23,24 @@ export function ProjectModal({ project, onClose, theme, onViewFullProject }: Pro
 
   // Define project-specific full details from AboutPage experience
   const getFullDetails = () => {
+    if (project.id === 0) {
+      return [
+        'Built and deployed a redesigned React website from a Figma prototype within a one week development cycle.',
+        'Improved mobile UX by advising on responsive layout decisions, including carousel-based image presentation for smaller screens.',
+        'Migrated DNS routing to Cloudflare and supported the transition from the previous WP Engine-hosted site.',
+        'Integrated TypeScript React components into an existing JavaScript React codebase while maintaining visual consistency across the site.',
+        'Managed deployment, Git-based version control, and client handoff guidance for future codebase updates.',
+      ];
+    }
+    if (project.id === 1) {
+      return [
+        'Built and deployed a responsive marketing agency website within a three-day turnaround as the sole developer.',
+        'Translated a medium-fidelity Figma prototype into a polished, interactive website across desktop and mobile breakpoints.',
+        'Owned the full delivery lifecycle, including project setup, frontend implementation, asset optimization, QA, deployment, and handoff.',
+        'Coordinated with the asset team on responsive media requirements, including aspect ratios and FFMPEG compression for web performance.',
+        'Implemented animated moving-gradient visuals while preserving layout stability and cross-device responsiveness.',
+      ];
+    }
     if (project.id === 1) {
       return [
         'Delivered a rapid Agile build converting a detailed Figma design into a pixel-accurate, responsive React site with continuous client feedback.',
